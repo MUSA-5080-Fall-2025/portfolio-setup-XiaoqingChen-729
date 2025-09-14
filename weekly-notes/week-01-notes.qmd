@@ -4,20 +4,20 @@ date: "2025-09-08"
 ---
 
 ## Key Concepts Learned
-- [List main concepts from lecture]
-- [Technical skills covered]
+- [Repo - Commit - Push - Pull]
+- [Cloud hosting for Git reposiories]
 
 ## Coding Techniques
-- [New R functions or approaches]
-- [Quarto features learned]
+- [Definitely VS code & GitHub]
+- [The intro of coding and R studio]
 
 ## Questions & Challenges
-- [What I didn't fully understand]
-- [Areas needing more practice]
+- [How can i find the realted original code that i need?]
+- [I guess we need more practice because practice makes perfect]
 
 ## Connections to Policy
-- [How this week's content applies to real policy work]
+- [I am still looking for the real way to connect knowledge to policy]
 
 ## Reflection
-- [What was most interesting]
-- [How I'll apply this knowledge]
+- [Loving work with my group & PPA is great!]
+- [Weely notes are written on my notebook.]
