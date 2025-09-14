@@ -15,7 +15,7 @@ Advanced spatial analysis and data science for urban planning and public policy.
 - **Final Project:** Capstone modeling challenge
 
 ## About Me
-[Students will customize this section]
+[Hi, i'm Xiaoqing, or u can call me Kelsey. Architecture was my undergraduate major, while as now i am learning MUSA at upenn. As for me, data analytics is more interesting and useful, so i think that's the main reason why i want to learn more knowledge in PPA.]
 
 ## Contact
 - Email: [your.email@upenn.edu]
