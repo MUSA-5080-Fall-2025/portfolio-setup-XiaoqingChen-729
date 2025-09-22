@@ -1,0 +1,11 @@
+---
+title: "Week 2 Notes"
+date: "2025-09-15"
+---
+
+## Key Concepts Learned
+- [Algorithmic Decision Making in Government]
+
+## Weekly notes picture
+- [Here's the jpg of my notes]
+![Week 2 Note](week-02-notes.jpg){width=80%}
