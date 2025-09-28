@@ -287,11 +287,8 @@ Improving reliability requires either aggregating data or using multi-year ACS e
 ```{r recommendations-data}
 
 library(dplyr)
-library(ggplot2)
+library(kableExtra)
 library(knitr)
-
-use_kableExtra <- requireNamespace("kableExtra", quietly = TRUE)
-if (use_kableExtra) library(kableExtra)
 
 kbl_safe <- function(x, ...) {
   tbl <- knitr::kable(x, ...)
@@ -332,12 +329,9 @@ recommendations_data <- ny_reliability %>%
     recommendation
   )
 
-kbl_safe(
-  recommendations_data,
-  col.names = c("County","Median Income ($)","Income MOE (%)","Reliability","Recommendation"),
-  caption = "Decision Framework for Algorithmic Implementation",
-  align = "lrrrr"
-)
+kable(recommendations_data,
+      col.names = c("County","Median Income ($)","Income MOE %","Reliability","Recommendation"),
+      caption = "Decision Framework for Algorithmic Implementation")
 ```
 
 recommendations_data %>% filter(reliability_category == "High Confidence")
