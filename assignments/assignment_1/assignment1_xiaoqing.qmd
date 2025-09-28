@@ -2,7 +2,7 @@
 title: "Assignment 1: Census Data Quality for Policy Decisions"
 subtitle: "Evaluating Data Reliability for Algorithmic Decision-Making"
 author: "Xiaoqing (Kelsey) Chen"
-date: 9/27
+date: "2025-09-27"
 format: 
   html:
     code-fold: false
