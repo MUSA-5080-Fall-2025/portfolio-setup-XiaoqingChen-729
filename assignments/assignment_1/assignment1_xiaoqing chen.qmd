@@ -1,0 +1,366 @@
+---
+title: "Assignment 1: Census Data Quality for Policy Decisions"
+subtitle: "Evaluating Data Reliability for Algorithmic Decision-Making"
+author: "Xiaoqing (Kelsey) Chen"
+date: 9/27
+format: 
+  html:
+    code-fold: false
+    toc: true
+    toc-location: left
+    theme: cosmo
+execute:
+  warning: false
+  message: false
+---
+
+# Part 1: Portfolio Integration
+
+```
+- text: Assignments
+  menu:
+    - href: assignments/assignment_1/your_file_name.qmd
+      text: "Assignment 1: Census Data Exploration"
+```
+# Setup
+
+```{r setup}
+library(tidycensus)
+library(tidyverse)
+library(knitr)
+
+census_api_key("e17c1c6ce413dc3faca31a17a58ab3374404bb9e")
+
+```
+
+**State Selection:** I have chosen **[New York]** for this analysis because: [I travelled to New York this month, so i'm curious about this county.]
+
+# Part 2: County-Level Resource Assessment
+
+## 2.1 Data Retrieval
+
+```{r county-data}
+
+state_pop <- get_acs(
+  geography = "county",
+  variables = "B01003_001",  
+  state = "NY", 
+  year = 2022,
+  survey = "acs5"
+)
+glimpse(state_pop)
+ny_data <- get_acs(
+  geography = "county",
+  variables = c(
+    total_pop = "B01003_001",
+    median_income = "B19013_001"
+  ),
+  state = "NY",
+  year = 2022,
+  output = "wide"
+)
+
+head(ny_data)
+
+ny_clean <- ny_data %>%
+  mutate(
+    county_name = str_remove(NAME, ", New York"),
+    county_name = str_remove(county_name, " County")
+  )
+
+```
+
+## 2.2 Data Quality Assessment
+
+```{r income-reliability}
+
+select(ny_clean, NAME, county_name)
+
+ny_reliability <- ny_clean %>%
+  mutate(
+    moe_percentage = round((median_incomeM / median_incomeE) * 100, 2),
+
+    reliability = case_when(
+      moe_percentage < 5 ~ "High Confidence",
+      moe_percentage >= 5 & moe_percentage <= 10 ~ "Moderate",
+      moe_percentage > 10 ~ "Low Confidence"
+    )
+  )
+
+count(ny_reliability, reliability)
+
+```
+
+## 2.3 High Uncertainty Counties
+
+
+```{r high-uncertainty}
+
+high_uncertainty <- ny_reliability %>%
+  filter(moe_percentage > 8) %>%
+  arrange(desc(moe_percentage)) %>%
+  select(county_name, median_incomeE, moe_percentage)
+
+reliability_summary <- ny_reliability %>%
+  group_by(reliability) %>%
+  summarize(
+    counties = n(),
+    avg_income = round(mean(median_incomeE, na.rm = TRUE), 0)
+  )
+
+kable(high_uncertainty,
+      col.names = c("County", "Median Income", "MOE %"),
+      caption = "Counties with Highest Income Data Uncertainty",
+      format.args = list(big.mark = ","))
+
+```
+
+**Data Quality Commentary:**
+
+  [The tables show that counties like Hamilton and Schuyler have high MOE in the income data, which means these data may lead to less reliable outcome or decision for residents in terms of algorithms. Small size of populations and limited survey samples may contribute to this uncertainty, so that unfair treatment or lows may be established which will affect local people in these areas.]
+
+# Part 3: Neighborhood-Level Analysis
+
+## 3.1 Focus Area Selection
+
+```{r select-counties}
+
+selected_counties <- ny_reliability %>%
+  filter(
+    county_name %in% c("Albany", "Schuyler", "Hamilton")
+  )
+selected_counties %>%
+  select(county_name, median_incomeE, moe_percentage, reliability)
+
+```
+
+**Comment on the output:** [These three countries reflects different levels of reliability. Albany has highly reliable income data with a very low MOE, while Hamilton's data displays higher uncertainty. As a result, lower populations and limited sample sizes may influence the data confidence, which could lead to less stable estimates and algorithmic decisions.]
+
+## 3.2 Tract-Level Demographics
+
+```{r tract-demographics}
+
+selected_counties <- c("Albany", "Hamilton", "Schuyler")
+
+ny_lookup <- tidycensus::fips_codes %>%
+  filter(state == "NY", county %in% paste0(selected_counties, " County")) %>%
+  distinct(county_code, county) %>%
+  mutate(county_name = str_remove(county, " County")) %>%
+  select(county_code, county_name)
+
+race_tract <- get_acs(
+  geography = "tract",
+  variables = c(
+    white     = "B03002_003",
+    black     = "B03002_004",
+    hispanic  = "B03002_012",
+    total_pop = "B03002_001"
+  ),
+  state  = "NY",
+  county = ny_lookup$county_code, 
+  year   = 2022,
+  survey = "acs5",
+  output = "wide"
+)
+
+race_tract <- race_tract %>%
+  mutate(
+    white_pct    = if_else(total_popE > 0, whiteE    / total_popE, NA_real_),
+    black_pct    = if_else(total_popE > 0, blackE    / total_popE, NA_real_),
+    hispanic_pct = if_else(total_popE > 0, hispanicE / total_popE, NA_real_)
+  )
+
+race_tract <- race_tract %>%
+  mutate(
+    county_fips = str_sub(GEOID, 3, 5),
+    tract_id    = str_sub(GEOID, 6)
+  ) %>%
+  left_join(ny_lookup, by = c("county_fips" = "county_code")) %>%
+  mutate(
+    tract_label = paste0(county_name, " County – Tract ", tract_id)
+  )
+
+race_tract %>%
+  select(GEOID, tract_label, county_name,
+         total_popE, whiteE, blackE, hispanicE,
+         white_pct, black_pct, hispanic_pct) %>%
+  arrange(county_name, tract_label) %>%
+  head()
+
+```
+
+## 3.3 Demographic Analysis
+
+```{r demographic-analysis}
+
+top_hispanic <- race_tract %>%
+  arrange(desc(hispanic_pct)) %>%
+  slice(1)
+
+top_hispanic
+
+county_summary <- race_tract %>%
+  group_by(county_name) %>%
+  summarize(
+    n_tracts = n(),
+    avg_white_pct = mean(white_pct, na.rm = TRUE),
+    avg_black_pct = mean(black_pct, na.rm = TRUE),
+    avg_hispanic_pct = mean(hispanic_pct, na.rm = TRUE),
+  )
+
+
+county_summary <- race_tract %>%
+  kable(digits = 2, captison = "Average Demographics by county (Albany, Hamilton, Schuyler)")
+```
+
+# Part 4: Comprehensive Data Quality Evaluation
+
+## 4.1 MOE Analysis for Demographic Variables
+
+```{r demographic-moe}
+
+demographic_moe <- race_tract %>%
+  mutate(
+    white_moe_pct    = if_else(is.na(whiteE)    | whiteE    == 0, NA_real_, 100 * whiteM    / whiteE),
+    black_moe_pct    = if_else(is.na(blackE)    | blackE    == 0, NA_real_, 100 * blackM    / blackE),
+    hispanic_moe_pct = if_else(is.na(hispanicE) | hispanicE == 0, NA_real_, 100 * hispanicM / hispanicE)
+  ) 
+
+demographic_moe <- demographic_moe %>%
+  mutate(
+    high_moe_flag = if_else(
+      white_moe_pct > 10 | black_moe_pct > 10 | hispanic_moe_pct > 10,
+      TRUE, FALSE
+    )
+  )
+
+summary_tracts <- demographic_moe %>%
+  summarise(
+    total_tracts    = n(),
+    high_moe_tracts = sum(high_moe_flag, na.rm = TRUE),
+    pct_high_moe    = 100 * mean(high_moe_flag, na.rm = TRUE)
+  )
+summary_tracts
+
+```
+
+## 4.2 Pattern Analysis
+
+```{r pattern-analysis}
+
+avg_characteristics <- demographic_moe %>%
+  group_by(high_moe_flag) %>%
+  summarise(
+    avg_pop      = mean(total_popE, na.rm = TRUE),
+    avg_white    = mean(white_pct, na.rm = TRUE),
+    avg_black    = mean(black_pct, na.rm = TRUE),
+    avg_hispanic = mean(hispanic_pct, na.rm = TRUE),
+    n_tracts     = n()
+  )
+
+avg_characteristics
+
+```
+
+**Pattern Analysis:** [Small tract populations would lead to a high MOE, so the related estimated are less reliable. On average, tracts flagged as high MOE only have nearly 3600 people, with minority groups like Hispanics accounting for only 6% of the total population.]
+
+
+# Part 5: Policy Recommendations
+
+## 5.1 Analysis Integration and Professional Summary
+
+**Executive Summary Requirements:**
+1. **Overall Pattern Identification**: What are the systematic patterns across all your analyses?
+2. **Equity Assessment**: Which communities face the greatest risk of algorithmic bias based on your findings?
+3. **Root Cause Analysis**: What underlying factors drive both data quality issues and bias risk?
+4. **Strategic Recommendations**: What should the Department implement to address these systematic issues?
+
+**Executive Summary:**
+
+[All 94 census tracts show at least one demographic group with MOE above 10%, indicating data reliability issues are widespread.For example, Albany County Tract 000100 has White MOE = 46.97%, Black MOE = 36.86%, and Hispanic MOE = 62.71%.
+Hispanic populations consistently show the highest MOEs, suggesting this group faces the greatest data reliability challenges.In many tracts, Hispanic MOEs exceed 60% or even 100%, while White and Black MOEs are also high but relatively lower.
+High MOE levels are largely driven by small population sizes in many tracts, which make reliable estimates difficult.On average, tracts flagged as high MOE have only about 3,596 people, with Hispanic populations averaging just 6%.
+Improving reliability requires either aggregating data or using multi-year ACS estimates to reduce sampling error.For example, combining smaller tracts or applying a population threshold before analysis would help minimize bias in Hispanic estimates.]
+
+## 6.3 Specific Recommendations
+
+```{r recommendations-data}
+
+library(dplyr)
+library(knitr)
+install.packages("kableExtra")
+library(kableExtra)
+
+
+moe_pct <- function(margin, estimate) {
+  ifelse(is.na(estimate) | estimate == 0, NA_real_, 100 * margin / estimate)
+}
+
+recommendations_data <- ny_reliability %>%
+  mutate(
+    income_moe_pct = if_else(is.na(median_incomeE) | median_incomeE == 0,
+                          NA_real_, 100 * median_incomeM / median_incomeE),
+
+  reliability_category = case_when(
+      !is.na(income_moe_pct) & income_moe_pct <= 5   ~ "High Confidence",
+      !is.na(income_moe_pct) & income_moe_pct <= 10  ~ "Moderate Confidence",
+      TRUE                                     ~ "Low Confidence"
+    ),
+  recommendation = case_when(
+      reliability_category == "High Confidence"     ~ "Safe for algorithmic decisions",
+      reliability_category == "Moderate Confidence" ~ "Use with caution – monitor outcomes",
+      reliability_category == "Low Confidence"      ~ "Requires manual review or additional data"
+    )
+  ) %>%
+  transmute(
+    county_name,
+    median_income = median_incomeE,
+    income_moe_pct = round(income_moe_pct, 1),
+    reliability_category,
+    recommendation
+  )
+
+recommendations_data %>%
+  kable(
+    col.names = c("County","Median Income ($)","Age MOE (%)","Reliability","Recommendation"),
+    align = "lrrll", format = "html"
+  ) %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped","condensed"))
+
+```
+
+recommendations_data %>% filter(reliability_category == "High Confidence")
+recommendations_data %>% filter(reliability_category == "Moderate Confidence")
+recommendations_data %>% filter(reliability_category == "Low Confidence")
+
+1. **Counties suitable for immediate algorithmic implementation:** [All counties with MOE below 5% can be safely used for automated decisions. For example, Albany, Allegany, and Bronx all show income MOE between 3–4%, indicating strong reliability. Other counties of high confidence inculdes Broome, Cattaraugus, Cayuge, Chautauqua, Chemung, Chenango and Clinton.]
+
+2. **Counties requiring additional oversight:** [Counties with MOE between 5–10% should be used with caution and monitored for stability. For instance, Essex (5.3%), Greene (7.0%), and Schuyler (5.8%) fall into this category, suggesting periodic review of outcomes. Besides, Seneca and Yates are also included in this category.]
+
+3. **Counties needing alternative approaches:** [Counties with MOE above 10% require manual review or supplemental data. Only Hamilton shows an income MOE of 11.4%, which signals insufficient reliability for direct algorithmic use.]
+
+## Questions for Further Investigation
+
+[1. How do MOE patterns differ between urban and rural counties, and what does this mean for equitable decision-making?
+2. Do time trends (e.g., comparing single-year vs. five-year ACS data) change the reliability patterns we observed?
+3. Are smaller minority populations systematically associated with higher MOEs, and how might improved sampling address this?]
+
+# Technical Notes
+
+**Data Sources:** 
+- U.S. Census Bureau, American Community Survey 2018-2022 5-Year Estimates
+- Retrieved via tidycensus R package on [2025.09.20]
+
+**Reproducibility:** 
+- All analysis conducted in R version [R Studio 4.3.1]
+- Census API key required for replication
+- Complete code and documentation available at: [your portfolio URL]
+
+**Methodology Notes:**
+[Defined high MOE as >10% relative margin of error.
+Used county-level median income MOE% as the primary reliability measure.]
+
+**Limitations:**
+[Tracts with small minority populations produce very high MOE%, which may lead to unreliable result.]
+
+---
