@@ -1,7 +1,7 @@
 ---
 title: "Assignment 1: Census Data Quality for Policy Decisions"
 subtitle: "Evaluating Data Reliability for Algorithmic Decision-Making"
-author: "Xiaoqing (Kelsey) Chen"
+author: "Xiaoqing(Kelsey) Chen"
 date: "2025-09-27"
 format: 
   html:
@@ -287,10 +287,22 @@ Improving reliability requires either aggregating data or using multi-year ACS e
 ```{r recommendations-data}
 
 library(dplyr)
+library(ggplot2)
 library(knitr)
-install.packages("kableExtra")
-library(kableExtra)
 
+use_kableExtra <- requireNamespace("kableExtra", quietly = TRUE)
+if (use_kableExtra) library(kableExtra)
+
+kbl_safe <- function(x, ...) {
+  tbl <- knitr::kable(x, ...)
+  if (use_kableExtra) {
+    tbl <- tbl %>% kableExtra::kable_styling(
+      full_width = FALSE,
+      bootstrap_options = c("striped","condensed")
+    )
+  }
+  tbl
+}
 
 moe_pct <- function(margin, estimate) {
   ifelse(is.na(estimate) | estimate == 0, NA_real_, 100 * margin / estimate)
@@ -320,13 +332,12 @@ recommendations_data <- ny_reliability %>%
     recommendation
   )
 
-recommendations_data %>%
-  kable(
-    col.names = c("County","Median Income ($)","Age MOE (%)","Reliability","Recommendation"),
-    align = "lrrll", format = "html"
-  ) %>%
-  kable_styling(full_width = FALSE, bootstrap_options = c("striped","condensed"))
-
+kbl_safe(
+  recommendations_data,
+  col.names = c("County","Median Income ($)","Income MOE (%)","Reliability","Recommendation"),
+  caption = "Decision Framework for Algorithmic Implementation",
+  align = "lrrrr"
+)
 ```
 
 recommendations_data %>% filter(reliability_category == "High Confidence")

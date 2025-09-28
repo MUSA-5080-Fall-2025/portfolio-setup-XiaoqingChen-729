@@ -16,8 +16,11 @@ website:
             text: Week 2
           - href: weekly-notes/week-03-notes.qmd
             text: Week 3
-      - href: assignments/assignment_1/assignment1_xiaoqing chen.qmd
-        text: "Assignment 1: Census Data Exploration"
+      - text: Assignments
+        menu:
+          - text: "Assignment 1: Census Data Exploration"
+            href: assignments/assignment_1/assignment1_xiaoqing.qmd
+
 
 format:
   html:
@@ -27,3 +30,7 @@ format:
 
 execute:
   freeze: auto
+
+project:
+  type: website
+  output-dir: docs
