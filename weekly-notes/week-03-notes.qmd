@@ -1,0 +1,13 @@
+---
+title: "Week 3 Notes"
+date: "2025-09-22"
+---
+
+## Key Concepts Learned
+- [Previous: proxy; Decennial Census/ ACX data; Algorithmic desicion-making]
+- [Current: Datra Visualization & Exploratory Analysis; Grammar of Graphics; Exploring Data Analysis]
+
+## Weekly notes picture
+- [Here's the jpg of my notes]
+![Week 3 Note](week-03-notes-1.jpg){width=80%}
+![Week 3 Note](week-03-notes-2.jpg){width=80%}
