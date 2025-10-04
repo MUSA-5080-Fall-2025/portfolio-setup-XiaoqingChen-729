@@ -1,0 +1,14 @@
+---
+title: "Week 4 Notes"
+date: "2025-09-29"
+---
+
+## Key Concepts Learned
+- [Previous: geom_point(color = "blue"); ggplot2]
+- [Current: Spatial Data Fundamentals; Geographic Coordinate Systems]
+
+## Weekly notes picture
+- [Here's the jpgs of my notes]
+![Week 3 Note](week-04-notes-1.jpg){width=80%}
+
+![Week 3 Note](week-04-notes-2.jpg){width=80%}

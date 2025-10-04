@@ -1,185 +1,45 @@
 [
   {
-    "objectID": "weekly-notes/week-03-notes.html",
-    "href": "weekly-notes/week-03-notes.html",
-    "title": "Week 3 Notes",
+    "objectID": "weekly-notes/week-04-notes.html",
+    "href": "weekly-notes/week-04-notes.html",
+    "title": "Week 4 Notes",
     "section": "",
-    "text": "[Previous: proxy; Decennial Census/ ACX data; Algorithmic desicion-making]\n[Current: Datra Visualization & Exploratory Analysis; Grammar of Graphics; Exploring Data Analysis]"
+    "text": "[Previous: geom_point(color = “blue”); ggplot2]\n[Current: Spatial Data Fundamentals; Geographic Coordinate Systems]"
   },
   {
-    "objectID": "weekly-notes/week-03-notes.html#key-concepts-learned",
-    "href": "weekly-notes/week-03-notes.html#key-concepts-learned",
-    "title": "Week 3 Notes",
+    "objectID": "weekly-notes/week-04-notes.html#key-concepts-learned",
+    "href": "weekly-notes/week-04-notes.html#key-concepts-learned",
+    "title": "Week 4 Notes",
     "section": "",
-    "text": "[Previous: proxy; Decennial Census/ ACX data; Algorithmic desicion-making]\n[Current: Datra Visualization & Exploratory Analysis; Grammar of Graphics; Exploring Data Analysis]"
+    "text": "[Previous: geom_point(color = “blue”); ggplot2]\n[Current: Spatial Data Fundamentals; Geographic Coordinate Systems]"
   },
   {
-    "objectID": "weekly-notes/week-03-notes.html#weekly-notes-picture",
-    "href": "weekly-notes/week-03-notes.html#weekly-notes-picture",
-    "title": "Week 3 Notes",
+    "objectID": "weekly-notes/week-04-notes.html#weekly-notes-picture",
+    "href": "weekly-notes/week-04-notes.html#weekly-notes-picture",
+    "title": "Week 4 Notes",
     "section": "Weekly notes picture",
-    "text": "Weekly notes picture\n\n[Here’s the jpgs of my notes]"
+    "text": "Weekly notes picture\n\n[Here’s the jpgs of my notes] \n\n\n\n\nWeek 3 Note"
   },
   {
-    "objectID": "weekly-notes/week-01-notes.html",
-    "href": "weekly-notes/week-01-notes.html",
-    "title": "Week 1 Notes - Course Introduction",
+    "objectID": "weekly-notes/week-02-notes.html",
+    "href": "weekly-notes/week-02-notes.html",
+    "title": "Week 2 Notes",
     "section": "",
-    "text": "[Repo - Commit - Push - Pull]\n[Cloud hosting for Git reposiories]"
+    "text": "[Algorithmic Decision Making in Government]"
   },
   {
-    "objectID": "weekly-notes/week-01-notes.html#key-concepts-learned",
-    "href": "weekly-notes/week-01-notes.html#key-concepts-learned",
-    "title": "Week 1 Notes - Course Introduction",
+    "objectID": "weekly-notes/week-02-notes.html#key-concepts-learned",
+    "href": "weekly-notes/week-02-notes.html#key-concepts-learned",
+    "title": "Week 2 Notes",
     "section": "",
-    "text": "[Repo - Commit - Push - Pull]\n[Cloud hosting for Git reposiories]"
+    "text": "[Algorithmic Decision Making in Government]"
   },
   {
-    "objectID": "weekly-notes/week-01-notes.html#coding-techniques",
-    "href": "weekly-notes/week-01-notes.html#coding-techniques",
-    "title": "Week 1 Notes - Course Introduction",
-    "section": "Coding Techniques",
-    "text": "Coding Techniques\n\n[Definitely VS code & GitHub]\n[The intro of coding and R studio]"
-  },
-  {
-    "objectID": "weekly-notes/week-01-notes.html#questions-challenges",
-    "href": "weekly-notes/week-01-notes.html#questions-challenges",
-    "title": "Week 1 Notes - Course Introduction",
-    "section": "Questions & Challenges",
-    "text": "Questions & Challenges\n\n[How can i find the realted original code that i need?]\n[I guess we need more practice because practice makes perfect]"
-  },
-  {
-    "objectID": "weekly-notes/week-01-notes.html#connections-to-policy",
-    "href": "weekly-notes/week-01-notes.html#connections-to-policy",
-    "title": "Week 1 Notes - Course Introduction",
-    "section": "Connections to Policy",
-    "text": "Connections to Policy\n\n[I am still looking for the real way to connect knowledge to policy]"
-  },
-  {
-    "objectID": "weekly-notes/week-01-notes.html#reflection",
-    "href": "weekly-notes/week-01-notes.html#reflection",
-    "title": "Week 1 Notes - Course Introduction",
-    "section": "Reflection",
-    "text": "Reflection\n\n[Loving work with my group & PPA is great!]\n[Weely notes are written on my notebook.]"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "MUSA 5080 Portfolio",
-    "section": "",
-    "text": "This portfolio documents my learning journey in Public Policy Analytics (MUSA 5080).\n\n\nAdvanced spatial analysis and data science for urban planning and public policy.\n\n\n\n\nWeekly Notes: My learning reflections and key concepts\nLabs: Completed assignments and analyses\nFinal Project: Capstone modeling challenge\n\n\n\n\n[Hi, i’m Xiaoqing, or u can call me Kelsey. Architecture was my undergraduate major, while as now i am learning MUSA at upenn. As for me, data analytics is more interesting and useful, so i think that’s the main reason why i want to learn more knowledge in PPA.]\n\n\n\n\nEmail: [chen007@upenn.edu]\nGitHub: [@XiaoqingChen-729]"
-  },
-  {
-    "objectID": "index.html#about-this-course",
-    "href": "index.html#about-this-course",
-    "title": "MUSA 5080 Portfolio",
-    "section": "",
-    "text": "Advanced spatial analysis and data science for urban planning and public policy."
-  },
-  {
-    "objectID": "index.html#portfolio-structure",
-    "href": "index.html#portfolio-structure",
-    "title": "MUSA 5080 Portfolio",
-    "section": "",
-    "text": "Weekly Notes: My learning reflections and key concepts\nLabs: Completed assignments and analyses\nFinal Project: Capstone modeling challenge"
-  },
-  {
-    "objectID": "index.html#about-me",
-    "href": "index.html#about-me",
-    "title": "MUSA 5080 Portfolio",
-    "section": "",
-    "text": "[Hi, i’m Xiaoqing, or u can call me Kelsey. Architecture was my undergraduate major, while as now i am learning MUSA at upenn. As for me, data analytics is more interesting and useful, so i think that’s the main reason why i want to learn more knowledge in PPA.]"
-  },
-  {
-    "objectID": "index.html#contact",
-    "href": "index.html#contact",
-    "title": "MUSA 5080 Portfolio",
-    "section": "",
-    "text": "Email: [chen007@upenn.edu]\nGitHub: [@XiaoqingChen-729]"
-  },
-  {
-    "objectID": "assignments/assignment_1/assignment1_xiaoqing.html",
-    "href": "assignments/assignment_1/assignment1_xiaoqing.html",
-    "title": "Assignment 1: Census Data Quality for Policy Decisions",
-    "section": "",
-    "text": "- text: Assignments\n  menu:\n    - href: assignments/assignment_1/your_file_name.qmd\n      text: \"Assignment 1: Census Data Exploration\""
-  },
-  {
-    "objectID": "assignments/assignment_1/assignment1_xiaoqing.html#data-retrieval",
-    "href": "assignments/assignment_1/assignment1_xiaoqing.html#data-retrieval",
-    "title": "Assignment 1: Census Data Quality for Policy Decisions",
-    "section": "2.1 Data Retrieval",
-    "text": "2.1 Data Retrieval\n\nstate_pop &lt;- get_acs(\n  geography = \"county\",\n  variables = \"B01003_001\",  \n  state = \"NY\", \n  year = 2022,\n  survey = \"acs5\"\n)\nglimpse(state_pop)\n\nRows: 62\nColumns: 5\n$ GEOID    &lt;chr&gt; \"36001\", \"36003\", \"36005\", \"36007\", \"36009\", \"36011\", \"36013\"…\n$ NAME     &lt;chr&gt; \"Albany County, New York\", \"Allegany County, New York\", \"Bron…\n$ variable &lt;chr&gt; \"B01003_001\", \"B01003_001\", \"B01003_001\", \"B01003_001\", \"B010…\n$ estimate &lt;dbl&gt; 315041, 47222, 1443229, 198365, 77000, 76171, 127440, 83584, …\n$ moe      &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n\nny_data &lt;- get_acs(\n  geography = \"county\",\n  variables = c(\n    total_pop = \"B01003_001\",\n    median_income = \"B19013_001\"\n  ),\n  state = \"NY\",\n  year = 2022,\n  output = \"wide\"\n)\n\nhead(ny_data)\n\n# A tibble: 6 × 6\n  GEOID NAME                 total_popE total_popM median_incomeE median_incomeM\n  &lt;chr&gt; &lt;chr&gt;                     &lt;dbl&gt;      &lt;dbl&gt;          &lt;dbl&gt;          &lt;dbl&gt;\n1 36001 Albany County, New …     315041         NA          78829           2049\n2 36003 Allegany County, Ne…      47222         NA          58725           1965\n3 36005 Bronx County, New Y…    1443229         NA          47036            890\n4 36007 Broome County, New …     198365         NA          58317           1761\n5 36009 Cattaraugus County,…      77000         NA          56889           1778\n6 36011 Cayuga County, New …      76171         NA          63227           2736\n\nny_clean &lt;- ny_data %&gt;%\n  mutate(\n    county_name = str_remove(NAME, \", New York\"),\n    county_name = str_remove(county_name, \" County\")\n  )"
-  },
-  {
-    "objectID": "assignments/assignment_1/assignment1_xiaoqing.html#data-quality-assessment",
-    "href": "assignments/assignment_1/assignment1_xiaoqing.html#data-quality-assessment",
-    "title": "Assignment 1: Census Data Quality for Policy Decisions",
-    "section": "2.2 Data Quality Assessment",
-    "text": "2.2 Data Quality Assessment\n\nselect(ny_clean, NAME, county_name)\n\n# A tibble: 62 × 2\n   NAME                         county_name\n   &lt;chr&gt;                        &lt;chr&gt;      \n 1 Albany County, New York      Albany     \n 2 Allegany County, New York    Allegany   \n 3 Bronx County, New York       Bronx      \n 4 Broome County, New York      Broome     \n 5 Cattaraugus County, New York Cattaraugus\n 6 Cayuga County, New York      Cayuga     \n 7 Chautauqua County, New York  Chautauqua \n 8 Chemung County, New York     Chemung    \n 9 Chenango County, New York    Chenango   \n10 Clinton County, New York     Clinton    \n# ℹ 52 more rows\n\nny_reliability &lt;- ny_clean %&gt;%\n  mutate(\n    moe_percentage = round((median_incomeM / median_incomeE) * 100, 2),\n\n    reliability = case_when(\n      moe_percentage &lt; 5 ~ \"High Confidence\",\n      moe_percentage &gt;= 5 & moe_percentage &lt;= 10 ~ \"Moderate\",\n      moe_percentage &gt; 10 ~ \"Low Confidence\"\n    )\n  )\n\ncount(ny_reliability, reliability)\n\n# A tibble: 3 × 2\n  reliability         n\n  &lt;chr&gt;           &lt;int&gt;\n1 High Confidence    56\n2 Low Confidence      1\n3 Moderate            5"
-  },
-  {
-    "objectID": "assignments/assignment_1/assignment1_xiaoqing.html#high-uncertainty-counties",
-    "href": "assignments/assignment_1/assignment1_xiaoqing.html#high-uncertainty-counties",
-    "title": "Assignment 1: Census Data Quality for Policy Decisions",
-    "section": "2.3 High Uncertainty Counties",
-    "text": "2.3 High Uncertainty Counties\n\nhigh_uncertainty &lt;- ny_reliability %&gt;%\n  filter(moe_percentage &gt; 8) %&gt;%\n  arrange(desc(moe_percentage)) %&gt;%\n  select(county_name, median_incomeE, moe_percentage)\n\nreliability_summary &lt;- ny_reliability %&gt;%\n  group_by(reliability) %&gt;%\n  summarize(\n    counties = n(),\n    avg_income = round(mean(median_incomeE, na.rm = TRUE), 0)\n  )\n\nkable(high_uncertainty,\n      col.names = c(\"County\", \"Median Income\", \"MOE %\"),\n      caption = \"Counties with Highest Income Data Uncertainty\",\n      format.args = list(big.mark = \",\"))\n\n\nCounties with Highest Income Data Uncertainty\n\n\nCounty\nMedian Income\nMOE %\n\n\n\n\nHamilton\n66,891\n11.39\n\n\nSchuyler\n61,316\n9.49\n\n\n\n\n\nData Quality Commentary:\n[The tables show that counties like Hamilton and Schuyler have high MOE in the income data, which means these data may lead to less reliable outcome or decision for residents in terms of algorithms. Small size of populations and limited survey samples may contribute to this uncertainty, so that unfair treatment or lows may be established which will affect local people in these areas.]"
-  },
-  {
-    "objectID": "assignments/assignment_1/assignment1_xiaoqing.html#focus-area-selection",
-    "href": "assignments/assignment_1/assignment1_xiaoqing.html#focus-area-selection",
-    "title": "Assignment 1: Census Data Quality for Policy Decisions",
-    "section": "3.1 Focus Area Selection",
-    "text": "3.1 Focus Area Selection\n\nselected_counties &lt;- ny_reliability %&gt;%\n  filter(\n    county_name %in% c(\"Albany\", \"Schuyler\", \"Hamilton\")\n  )\nselected_counties %&gt;%\n  select(county_name, median_incomeE, moe_percentage, reliability)\n\n# A tibble: 3 × 4\n  county_name median_incomeE moe_percentage reliability    \n  &lt;chr&gt;                &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;          \n1 Albany               78829           2.6  High Confidence\n2 Hamilton             66891          11.4  Low Confidence \n3 Schuyler             61316           9.49 Moderate       \n\n\nComment on the output: [These three countries reflects different levels of reliability. Albany has highly reliable income data with a very low MOE, while Hamilton’s data displays higher uncertainty. As a result, lower populations and limited sample sizes may influence the data confidence, which could lead to less stable estimates and algorithmic decisions.]"
-  },
-  {
-    "objectID": "assignments/assignment_1/assignment1_xiaoqing.html#tract-level-demographics",
-    "href": "assignments/assignment_1/assignment1_xiaoqing.html#tract-level-demographics",
-    "title": "Assignment 1: Census Data Quality for Policy Decisions",
-    "section": "3.2 Tract-Level Demographics",
-    "text": "3.2 Tract-Level Demographics\n\nselected_counties &lt;- c(\"Albany\", \"Hamilton\", \"Schuyler\")\n\nny_lookup &lt;- tidycensus::fips_codes %&gt;%\n  filter(state == \"NY\", county %in% paste0(selected_counties, \" County\")) %&gt;%\n  distinct(county_code, county) %&gt;%\n  mutate(county_name = str_remove(county, \" County\")) %&gt;%\n  select(county_code, county_name)\n\nrace_tract &lt;- get_acs(\n  geography = \"tract\",\n  variables = c(\n    white     = \"B03002_003\",\n    black     = \"B03002_004\",\n    hispanic  = \"B03002_012\",\n    total_pop = \"B03002_001\"\n  ),\n  state  = \"NY\",\n  county = ny_lookup$county_code, \n  year   = 2022,\n  survey = \"acs5\",\n  output = \"wide\"\n)\n\nrace_tract &lt;- race_tract %&gt;%\n  mutate(\n    white_pct    = if_else(total_popE &gt; 0, whiteE    / total_popE, NA_real_),\n    black_pct    = if_else(total_popE &gt; 0, blackE    / total_popE, NA_real_),\n    hispanic_pct = if_else(total_popE &gt; 0, hispanicE / total_popE, NA_real_)\n  )\n\nrace_tract &lt;- race_tract %&gt;%\n  mutate(\n    county_fips = str_sub(GEOID, 3, 5),\n    tract_id    = str_sub(GEOID, 6)\n  ) %&gt;%\n  left_join(ny_lookup, by = c(\"county_fips\" = \"county_code\")) %&gt;%\n  mutate(\n    tract_label = paste0(county_name, \" County – Tract \", tract_id)\n  )\n\nrace_tract %&gt;%\n  select(GEOID, tract_label, county_name,\n         total_popE, whiteE, blackE, hispanicE,\n         white_pct, black_pct, hispanic_pct) %&gt;%\n  arrange(county_name, tract_label) %&gt;%\n  head()\n\n# A tibble: 6 × 10\n  GEOID     tract_label county_name total_popE whiteE blackE hispanicE white_pct\n  &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;            &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n1 36001000… Albany Cou… Albany            2259    725    982       346     0.321\n2 36001000… Albany Cou… Albany            2465    372   1742       174     0.151\n3 36001000… Albany Cou… Albany            2374    317   1952        45     0.134\n4 36001000… Albany Cou… Albany            2837    678   1271       673     0.239\n5 36001000… Albany Cou… Albany            3200   1963    538       183     0.613\n6 36001000… Albany Cou… Albany            2301   2012    134        98     0.874\n# ℹ 2 more variables: black_pct &lt;dbl&gt;, hispanic_pct &lt;dbl&gt;"
-  },
-  {
-    "objectID": "assignments/assignment_1/assignment1_xiaoqing.html#demographic-analysis",
-    "href": "assignments/assignment_1/assignment1_xiaoqing.html#demographic-analysis",
-    "title": "Assignment 1: Census Data Quality for Policy Decisions",
-    "section": "3.3 Demographic Analysis",
-    "text": "3.3 Demographic Analysis\n\ntop_hispanic &lt;- race_tract %&gt;%\n  arrange(desc(hispanic_pct)) %&gt;%\n  slice(1)\n\ntop_hispanic\n\n# A tibble: 1 × 17\n  GEOID       NAME    whiteE whiteM blackE blackM hispanicE hispanicM total_popE\n  &lt;chr&gt;       &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;\n1 36001002000 Census…   2846    835   1460    445      1562       811       6576\n# ℹ 8 more variables: total_popM &lt;dbl&gt;, white_pct &lt;dbl&gt;, black_pct &lt;dbl&gt;,\n#   hispanic_pct &lt;dbl&gt;, county_fips &lt;chr&gt;, tract_id &lt;chr&gt;, county_name &lt;chr&gt;,\n#   tract_label &lt;chr&gt;\n\ncounty_summary &lt;- race_tract %&gt;%\n  group_by(county_name) %&gt;%\n  summarize(\n    n_tracts = n(),\n    avg_white_pct = mean(white_pct, na.rm = TRUE),\n    avg_black_pct = mean(black_pct, na.rm = TRUE),\n    avg_hispanic_pct = mean(hispanic_pct, na.rm = TRUE),\n  )\n\n\ncounty_summary &lt;- race_tract %&gt;%\n  kable(digits = 2, captison = \"Average Demographics by county (Albany, Hamilton, Schuyler)\")"
-  },
-  {
-    "objectID": "assignments/assignment_1/assignment1_xiaoqing.html#moe-analysis-for-demographic-variables",
-    "href": "assignments/assignment_1/assignment1_xiaoqing.html#moe-analysis-for-demographic-variables",
-    "title": "Assignment 1: Census Data Quality for Policy Decisions",
-    "section": "4.1 MOE Analysis for Demographic Variables",
-    "text": "4.1 MOE Analysis for Demographic Variables\n\ndemographic_moe &lt;- race_tract %&gt;%\n  mutate(\n    white_moe_pct    = if_else(is.na(whiteE)    | whiteE    == 0, NA_real_, 100 * whiteM    / whiteE),\n    black_moe_pct    = if_else(is.na(blackE)    | blackE    == 0, NA_real_, 100 * blackM    / blackE),\n    hispanic_moe_pct = if_else(is.na(hispanicE) | hispanicE == 0, NA_real_, 100 * hispanicM / hispanicE)\n  ) \n\ndemographic_moe &lt;- demographic_moe %&gt;%\n  mutate(\n    high_moe_flag = if_else(\n      white_moe_pct &gt; 10 | black_moe_pct &gt; 10 | hispanic_moe_pct &gt; 10,\n      TRUE, FALSE\n    )\n  )\n\nsummary_tracts &lt;- demographic_moe %&gt;%\n  summarise(\n    total_tracts    = n(),\n    high_moe_tracts = sum(high_moe_flag, na.rm = TRUE),\n    pct_high_moe    = 100 * mean(high_moe_flag, na.rm = TRUE)\n  )\nsummary_tracts\n\n# A tibble: 1 × 3\n  total_tracts high_moe_tracts pct_high_moe\n         &lt;int&gt;           &lt;int&gt;        &lt;dbl&gt;\n1           94              94          100"
-  },
-  {
-    "objectID": "assignments/assignment_1/assignment1_xiaoqing.html#pattern-analysis",
-    "href": "assignments/assignment_1/assignment1_xiaoqing.html#pattern-analysis",
-    "title": "Assignment 1: Census Data Quality for Policy Decisions",
-    "section": "4.2 Pattern Analysis",
-    "text": "4.2 Pattern Analysis\n\navg_characteristics &lt;- demographic_moe %&gt;%\n  group_by(high_moe_flag) %&gt;%\n  summarise(\n    avg_pop      = mean(total_popE, na.rm = TRUE),\n    avg_white    = mean(white_pct, na.rm = TRUE),\n    avg_black    = mean(black_pct, na.rm = TRUE),\n    avg_hispanic = mean(hispanic_pct, na.rm = TRUE),\n    n_tracts     = n()\n  )\n\navg_characteristics\n\n# A tibble: 1 × 6\n  high_moe_flag avg_pop avg_white avg_black avg_hispanic n_tracts\n  &lt;lgl&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt;    &lt;int&gt;\n1 TRUE            3596.     0.711     0.116       0.0607       94\n\n\nPattern Analysis: [Small tract populations would lead to a high MOE, so the related estimated are less reliable. On average, tracts flagged as high MOE only have nearly 3600 people, with minority groups like Hispanics accounting for only 6% of the total population.]"
-  },
-  {
-    "objectID": "assignments/assignment_1/assignment1_xiaoqing.html#analysis-integration-and-professional-summary",
-    "href": "assignments/assignment_1/assignment1_xiaoqing.html#analysis-integration-and-professional-summary",
-    "title": "Assignment 1: Census Data Quality for Policy Decisions",
-    "section": "5.1 Analysis Integration and Professional Summary",
-    "text": "5.1 Analysis Integration and Professional Summary\nExecutive Summary Requirements: 1. Overall Pattern Identification: What are the systematic patterns across all your analyses? 2. Equity Assessment: Which communities face the greatest risk of algorithmic bias based on your findings? 3. Root Cause Analysis: What underlying factors drive both data quality issues and bias risk? 4. Strategic Recommendations: What should the Department implement to address these systematic issues?\nExecutive Summary:\n[All 94 census tracts show at least one demographic group with MOE above 10%, indicating data reliability issues are widespread.For example, Albany County Tract 000100 has White MOE = 46.97%, Black MOE = 36.86%, and Hispanic MOE = 62.71%. Hispanic populations consistently show the highest MOEs, suggesting this group faces the greatest data reliability challenges.In many tracts, Hispanic MOEs exceed 60% or even 100%, while White and Black MOEs are also high but relatively lower. High MOE levels are largely driven by small population sizes in many tracts, which make reliable estimates difficult.On average, tracts flagged as high MOE have only about 3,596 people, with Hispanic populations averaging just 6%. Improving reliability requires either aggregating data or using multi-year ACS estimates to reduce sampling error.For example, combining smaller tracts or applying a population threshold before analysis would help minimize bias in Hispanic estimates.]"
-  },
-  {
-    "objectID": "assignments/assignment_1/assignment1_xiaoqing.html#specific-recommendations",
-    "href": "assignments/assignment_1/assignment1_xiaoqing.html#specific-recommendations",
-    "title": "Assignment 1: Census Data Quality for Policy Decisions",
-    "section": "6.3 Specific Recommendations",
-    "text": "6.3 Specific Recommendations\n\nlibrary(dplyr)\nlibrary(kableExtra)\nlibrary(knitr)\n\nkbl_safe &lt;- function(x, ...) {\n  tbl &lt;- knitr::kable(x, ...)\n  if (use_kableExtra) {\n    tbl &lt;- tbl %&gt;% kableExtra::kable_styling(\n      full_width = FALSE,\n      bootstrap_options = c(\"striped\",\"condensed\")\n    )\n  }\n  tbl\n}\n\nmoe_pct &lt;- function(margin, estimate) {\n  ifelse(is.na(estimate) | estimate == 0, NA_real_, 100 * margin / estimate)\n}\n\nrecommendations_data &lt;- ny_reliability %&gt;%\n  mutate(\n    income_moe_pct = if_else(is.na(median_incomeE) | median_incomeE == 0,\n                          NA_real_, 100 * median_incomeM / median_incomeE),\n\n  reliability_category = case_when(\n      !is.na(income_moe_pct) & income_moe_pct &lt;= 5   ~ \"High Confidence\",\n      !is.na(income_moe_pct) & income_moe_pct &lt;= 10  ~ \"Moderate Confidence\",\n      TRUE                                     ~ \"Low Confidence\"\n    ),\n  recommendation = case_when(\n      reliability_category == \"High Confidence\"     ~ \"Safe for algorithmic decisions\",\n      reliability_category == \"Moderate Confidence\" ~ \"Use with caution – monitor outcomes\",\n      reliability_category == \"Low Confidence\"      ~ \"Requires manual review or additional data\"\n    )\n  ) %&gt;%\n  transmute(\n    county_name,\n    median_income = median_incomeE,\n    income_moe_pct = round(income_moe_pct, 1),\n    reliability_category,\n    recommendation\n  )\n\nkable(recommendations_data,\n      col.names = c(\"County\",\"Median Income ($)\",\"Income MOE %\",\"Reliability\",\"Recommendation\"),\n      caption = \"Decision Framework for Algorithmic Implementation\")\n\n\nDecision Framework for Algorithmic Implementation\n\n\n\n\n\n\n\n\n\nCounty\nMedian Income ($)\nIncome MOE %\nReliability\nRecommendation\n\n\n\n\nAlbany\n78829\n2.6\nHigh Confidence\nSafe for algorithmic decisions\n\n\nAllegany\n58725\n3.3\nHigh Confidence\nSafe for algorithmic decisions\n\n\nBronx\n47036\n1.9\nHigh Confidence\nSafe for algorithmic decisions\n\n\nBroome\n58317\n3.0\nHigh Confidence\nSafe for algorithmic decisions\n\n\nCattaraugus\n56889\n3.1\nHigh Confidence\nSafe for algorithmic decisions\n\n\nCayuga\n63227\n4.3\nHigh Confidence\nSafe for algorithmic decisions\n\n\nChautauqua\n54625\n3.2\nHigh Confidence\nSafe for algorithmic decisions\n\n\nChemung\n61358\n4.0\nHigh Confidence\nSafe for algorithmic decisions\n\n\nChenango\n61741\n4.1\nHigh Confidence\nSafe for algorithmic decisions\n\n\nClinton\n67097\n4.2\nHigh Confidence\nSafe for algorithmic decisions\n\n\nColumbia\n81741\n3.4\nHigh Confidence\nSafe for algorithmic decisions\n\n\nCortland\n65029\n4.4\nHigh Confidence\nSafe for algorithmic decisions\n\n\nDelaware\n58338\n3.7\nHigh Confidence\nSafe for algorithmic decisions\n\n\nDutchess\n94578\n2.7\nHigh Confidence\nSafe for algorithmic decisions\n\n\nErie\n68014\n1.2\nHigh Confidence\nSafe for algorithmic decisions\n\n\nEssex\n68090\n5.3\nModerate Confidence\nUse with caution – monitor outcomes\n\n\nFranklin\n60270\n4.8\nHigh Confidence\nSafe for algorithmic decisions\n\n\nFulton\n60557\n4.4\nHigh Confidence\nSafe for algorithmic decisions\n\n\nGenesee\n68178\n4.6\nHigh Confidence\nSafe for algorithmic decisions\n\n\nGreene\n70294\n6.2\nModerate Confidence\nUse with caution – monitor outcomes\n\n\nHamilton\n66891\n11.4\nLow Confidence\nRequires manual review or additional data\n\n\nHerkimer\n68104\n4.8\nHigh Confidence\nSafe for algorithmic decisions\n\n\nJefferson\n62782\n3.6\nHigh Confidence\nSafe for algorithmic decisions\n\n\nKings\n74692\n1.3\nHigh Confidence\nSafe for algorithmic decisions\n\n\nLewis\n64401\n4.2\nHigh Confidence\nSafe for algorithmic decisions\n\n\nLivingston\n70443\n4.0\nHigh Confidence\nSafe for algorithmic decisions\n\n\nMadison\n68869\n4.0\nHigh Confidence\nSafe for algorithmic decisions\n\n\nMonroe\n71450\n1.4\nHigh Confidence\nSafe for algorithmic decisions\n\n\nMontgomery\n58033\n3.6\nHigh Confidence\nSafe for algorithmic decisions\n\n\nNassau\n137709\n1.4\nHigh Confidence\nSafe for algorithmic decisions\n\n\nNew York\n99880\n1.8\nHigh Confidence\nSafe for algorithmic decisions\n\n\nNiagara\n65882\n2.7\nHigh Confidence\nSafe for algorithmic decisions\n\n\nOneida\n66402\n3.3\nHigh Confidence\nSafe for algorithmic decisions\n\n\nOnondaga\n71479\n1.6\nHigh Confidence\nSafe for algorithmic decisions\n\n\nOntario\n76603\n2.9\nHigh Confidence\nSafe for algorithmic decisions\n\n\nOrange\n91806\n1.9\nHigh Confidence\nSafe for algorithmic decisions\n\n\nOrleans\n61069\n4.9\nHigh Confidence\nSafe for algorithmic decisions\n\n\nOswego\n65054\n3.3\nHigh Confidence\nSafe for algorithmic decisions\n\n\nOtsego\n65778\n4.5\nHigh Confidence\nSafe for algorithmic decisions\n\n\nPutnam\n120970\n4.0\nHigh Confidence\nSafe for algorithmic decisions\n\n\nQueens\n82431\n1.1\nHigh Confidence\nSafe for algorithmic decisions\n\n\nRensselaer\n83734\n2.3\nHigh Confidence\nSafe for algorithmic decisions\n\n\nRichmond\n96185\n2.6\nHigh Confidence\nSafe for algorithmic decisions\n\n\nRockland\n106173\n2.9\nHigh Confidence\nSafe for algorithmic decisions\n\n\nSt. Lawrence\n58339\n3.5\nHigh Confidence\nSafe for algorithmic decisions\n\n\nSaratoga\n97038\n2.3\nHigh Confidence\nSafe for algorithmic decisions\n\n\nSchenectady\n75056\n3.0\nHigh Confidence\nSafe for algorithmic decisions\n\n\nSchoharie\n71479\n4.0\nHigh Confidence\nSafe for algorithmic decisions\n\n\nSchuyler\n61316\n9.5\nModerate Confidence\nUse with caution – monitor outcomes\n\n\nSeneca\n64050\n5.2\nModerate Confidence\nUse with caution – monitor outcomes\n\n\nSteuben\n62506\n2.9\nHigh Confidence\nSafe for algorithmic decisions\n\n\nSuffolk\n122498\n1.2\nHigh Confidence\nSafe for algorithmic decisions\n\n\nSullivan\n67841\n4.4\nHigh Confidence\nSafe for algorithmic decisions\n\n\nTioga\n70427\n4.0\nHigh Confidence\nSafe for algorithmic decisions\n\n\nTompkins\n69995\n4.0\nHigh Confidence\nSafe for algorithmic decisions\n\n\nUlster\n77197\n4.5\nHigh Confidence\nSafe for algorithmic decisions\n\n\nWarren\n74531\n4.7\nHigh Confidence\nSafe for algorithmic decisions\n\n\nWashington\n68703\n3.4\nHigh Confidence\nSafe for algorithmic decisions\n\n\nWayne\n71007\n3.1\nHigh Confidence\nSafe for algorithmic decisions\n\n\nWestchester\n114651\n1.6\nHigh Confidence\nSafe for algorithmic decisions\n\n\nWyoming\n65066\n3.4\nHigh Confidence\nSafe for algorithmic decisions\n\n\nYates\n63974\n5.8\nModerate Confidence\nUse with caution – monitor outcomes\n\n\n\n\n\nrecommendations_data %&gt;% filter(reliability_category == “High Confidence”) recommendations_data %&gt;% filter(reliability_category == “Moderate Confidence”) recommendations_data %&gt;% filter(reliability_category == “Low Confidence”)\n\nCounties suitable for immediate algorithmic implementation: [All counties with MOE below 5% can be safely used for automated decisions. For example, Albany, Allegany, and Bronx all show income MOE between 3–4%, indicating strong reliability. Other counties of high confidence inculdes Broome, Cattaraugus, Cayuge, Chautauqua, Chemung, Chenango and Clinton.]\nCounties requiring additional oversight: [Counties with MOE between 5–10% should be used with caution and monitored for stability. For instance, Essex (5.3%), Greene (7.0%), and Schuyler (5.8%) fall into this category, suggesting periodic review of outcomes. Besides, Seneca and Yates are also included in this category.]\nCounties needing alternative approaches: [Counties with MOE above 10% require manual review or supplemental data. Only Hamilton shows an income MOE of 11.4%, which signals insufficient reliability for direct algorithmic use.]"
-  },
-  {
-    "objectID": "assignments/assignment_1/assignment1_xiaoqing.html#questions-for-further-investigation",
-    "href": "assignments/assignment_1/assignment1_xiaoqing.html#questions-for-further-investigation",
-    "title": "Assignment 1: Census Data Quality for Policy Decisions",
-    "section": "Questions for Further Investigation",
-    "text": "Questions for Further Investigation\n[1. How do MOE patterns differ between urban and rural counties, and what does this mean for equitable decision-making? 2. Do time trends (e.g., comparing single-year vs. five-year ACS data) change the reliability patterns we observed? 3. Are smaller minority populations systematically associated with higher MOEs, and how might improved sampling address this?]"
+    "objectID": "weekly-notes/week-02-notes.html#weekly-notes-picture",
+    "href": "weekly-notes/week-02-notes.html#weekly-notes-picture",
+    "title": "Week 2 Notes",
+    "section": "Weekly notes picture",
+    "text": "Weekly notes picture\n\n[Here’s the jpg of my notes]"
   },
   {
     "objectID": "instructions_week1.html",
@@ -266,24 +126,185 @@
     "text": "Before submitting, make sure you’ve: - [ ] Customized _quarto.yml with your name - [ ] Updated index.qmd with your information - [ ] Completed Week 1 notes - [ ] Enabled GitHub Pages - [ ] Verified your website loads correctly - [ ] Submitted your URL to Canvas\n\nNeed help? Don’t struggle alone - reach out during office hours (mine + TAs) or in class!"
   },
   {
-    "objectID": "weekly-notes/week-02-notes.html",
-    "href": "weekly-notes/week-02-notes.html",
-    "title": "Week 2 Notes",
+    "objectID": "assignments/assignment_1/assignment1_xiaoqing.html",
+    "href": "assignments/assignment_1/assignment1_xiaoqing.html",
+    "title": "Assignment 1: Census Data Quality for Policy Decisions",
     "section": "",
-    "text": "[Algorithmic Decision Making in Government]"
+    "text": "- text: Assignments\n  menu:\n    - href: assignments/assignment_1/your_file_name.qmd\n      text: \"Assignment 1: Census Data Exploration\""
   },
   {
-    "objectID": "weekly-notes/week-02-notes.html#key-concepts-learned",
-    "href": "weekly-notes/week-02-notes.html#key-concepts-learned",
-    "title": "Week 2 Notes",
-    "section": "",
-    "text": "[Algorithmic Decision Making in Government]"
+    "objectID": "assignments/assignment_1/assignment1_xiaoqing.html#data-retrieval",
+    "href": "assignments/assignment_1/assignment1_xiaoqing.html#data-retrieval",
+    "title": "Assignment 1: Census Data Quality for Policy Decisions",
+    "section": "2.1 Data Retrieval",
+    "text": "2.1 Data Retrieval\n\nstate_pop &lt;- get_acs(\n  geography = \"county\",\n  variables = \"B01003_001\",  \n  state = \"NY\", \n  year = 2022,\n  survey = \"acs5\"\n)\nglimpse(state_pop)\n\nRows: 62\nColumns: 5\n$ GEOID    &lt;chr&gt; \"36001\", \"36003\", \"36005\", \"36007\", \"36009\", \"36011\", \"36013\"…\n$ NAME     &lt;chr&gt; \"Albany County, New York\", \"Allegany County, New York\", \"Bron…\n$ variable &lt;chr&gt; \"B01003_001\", \"B01003_001\", \"B01003_001\", \"B01003_001\", \"B010…\n$ estimate &lt;dbl&gt; 315041, 47222, 1443229, 198365, 77000, 76171, 127440, 83584, …\n$ moe      &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n\nny_data &lt;- get_acs(\n  geography = \"county\",\n  variables = c(\n    total_pop = \"B01003_001\",\n    median_income = \"B19013_001\"\n  ),\n  state = \"NY\",\n  year = 2022,\n  output = \"wide\"\n)\n\nhead(ny_data)\n\n# A tibble: 6 × 6\n  GEOID NAME                 total_popE total_popM median_incomeE median_incomeM\n  &lt;chr&gt; &lt;chr&gt;                     &lt;dbl&gt;      &lt;dbl&gt;          &lt;dbl&gt;          &lt;dbl&gt;\n1 36001 Albany County, New …     315041         NA          78829           2049\n2 36003 Allegany County, Ne…      47222         NA          58725           1965\n3 36005 Bronx County, New Y…    1443229         NA          47036            890\n4 36007 Broome County, New …     198365         NA          58317           1761\n5 36009 Cattaraugus County,…      77000         NA          56889           1778\n6 36011 Cayuga County, New …      76171         NA          63227           2736\n\nny_clean &lt;- ny_data %&gt;%\n  mutate(\n    county_name = str_remove(NAME, \", New York\"),\n    county_name = str_remove(county_name, \" County\")\n  )"
   },
   {
-    "objectID": "weekly-notes/week-02-notes.html#weekly-notes-picture",
-    "href": "weekly-notes/week-02-notes.html#weekly-notes-picture",
-    "title": "Week 2 Notes",
+    "objectID": "assignments/assignment_1/assignment1_xiaoqing.html#data-quality-assessment",
+    "href": "assignments/assignment_1/assignment1_xiaoqing.html#data-quality-assessment",
+    "title": "Assignment 1: Census Data Quality for Policy Decisions",
+    "section": "2.2 Data Quality Assessment",
+    "text": "2.2 Data Quality Assessment\n\nselect(ny_clean, NAME, county_name)\n\n# A tibble: 62 × 2\n   NAME                         county_name\n   &lt;chr&gt;                        &lt;chr&gt;      \n 1 Albany County, New York      Albany     \n 2 Allegany County, New York    Allegany   \n 3 Bronx County, New York       Bronx      \n 4 Broome County, New York      Broome     \n 5 Cattaraugus County, New York Cattaraugus\n 6 Cayuga County, New York      Cayuga     \n 7 Chautauqua County, New York  Chautauqua \n 8 Chemung County, New York     Chemung    \n 9 Chenango County, New York    Chenango   \n10 Clinton County, New York     Clinton    \n# ℹ 52 more rows\n\nny_reliability &lt;- ny_clean %&gt;%\n  mutate(\n    moe_percentage = round((median_incomeM / median_incomeE) * 100, 2),\n\n    reliability = case_when(\n      moe_percentage &lt; 5 ~ \"High Confidence\",\n      moe_percentage &gt;= 5 & moe_percentage &lt;= 10 ~ \"Moderate\",\n      moe_percentage &gt; 10 ~ \"Low Confidence\"\n    )\n  )\n\ncount(ny_reliability, reliability)\n\n# A tibble: 3 × 2\n  reliability         n\n  &lt;chr&gt;           &lt;int&gt;\n1 High Confidence    56\n2 Low Confidence      1\n3 Moderate            5"
+  },
+  {
+    "objectID": "assignments/assignment_1/assignment1_xiaoqing.html#high-uncertainty-counties",
+    "href": "assignments/assignment_1/assignment1_xiaoqing.html#high-uncertainty-counties",
+    "title": "Assignment 1: Census Data Quality for Policy Decisions",
+    "section": "2.3 High Uncertainty Counties",
+    "text": "2.3 High Uncertainty Counties\n\nhigh_uncertainty &lt;- ny_reliability %&gt;%\n  filter(moe_percentage &gt; 8) %&gt;%\n  arrange(desc(moe_percentage)) %&gt;%\n  select(county_name, median_incomeE, moe_percentage)\n\nreliability_summary &lt;- ny_reliability %&gt;%\n  group_by(reliability) %&gt;%\n  summarize(\n    counties = n(),\n    avg_income = round(mean(median_incomeE, na.rm = TRUE), 0)\n  )\n\nkable(high_uncertainty,\n      col.names = c(\"County\", \"Median Income\", \"MOE %\"),\n      caption = \"Counties with Highest Income Data Uncertainty\",\n      format.args = list(big.mark = \",\"))\n\n\nCounties with Highest Income Data Uncertainty\n\n\nCounty\nMedian Income\nMOE %\n\n\n\n\nHamilton\n66,891\n11.39\n\n\nSchuyler\n61,316\n9.49\n\n\n\n\n\nData Quality Commentary:\n[The tables show that counties like Hamilton and Schuyler have high MOE in the income data, which means these data may lead to less reliable outcome or decision for residents in terms of algorithms. Small size of populations and limited survey samples may contribute to this uncertainty, so that unfair treatment or lows may be established which will affect local people in these areas.]"
+  },
+  {
+    "objectID": "assignments/assignment_1/assignment1_xiaoqing.html#focus-area-selection",
+    "href": "assignments/assignment_1/assignment1_xiaoqing.html#focus-area-selection",
+    "title": "Assignment 1: Census Data Quality for Policy Decisions",
+    "section": "3.1 Focus Area Selection",
+    "text": "3.1 Focus Area Selection\n\nselected_counties &lt;- ny_reliability %&gt;%\n  filter(\n    county_name %in% c(\"Albany\", \"Schuyler\", \"Hamilton\")\n  )\nselected_counties %&gt;%\n  select(county_name, median_incomeE, moe_percentage, reliability)\n\n# A tibble: 3 × 4\n  county_name median_incomeE moe_percentage reliability    \n  &lt;chr&gt;                &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;          \n1 Albany               78829           2.6  High Confidence\n2 Hamilton             66891          11.4  Low Confidence \n3 Schuyler             61316           9.49 Moderate       \n\n\nComment on the output: [These three countries reflects different levels of reliability. Albany has highly reliable income data with a very low MOE, while Hamilton’s data displays higher uncertainty. As a result, lower populations and limited sample sizes may influence the data confidence, which could lead to less stable estimates and algorithmic decisions.]"
+  },
+  {
+    "objectID": "assignments/assignment_1/assignment1_xiaoqing.html#tract-level-demographics",
+    "href": "assignments/assignment_1/assignment1_xiaoqing.html#tract-level-demographics",
+    "title": "Assignment 1: Census Data Quality for Policy Decisions",
+    "section": "3.2 Tract-Level Demographics",
+    "text": "3.2 Tract-Level Demographics\n\nselected_counties &lt;- c(\"Albany\", \"Hamilton\", \"Schuyler\")\n\nny_lookup &lt;- tidycensus::fips_codes %&gt;%\n  filter(state == \"NY\", county %in% paste0(selected_counties, \" County\")) %&gt;%\n  distinct(county_code, county) %&gt;%\n  mutate(county_name = str_remove(county, \" County\")) %&gt;%\n  select(county_code, county_name)\n\nrace_tract &lt;- get_acs(\n  geography = \"tract\",\n  variables = c(\n    white     = \"B03002_003\",\n    black     = \"B03002_004\",\n    hispanic  = \"B03002_012\",\n    total_pop = \"B03002_001\"\n  ),\n  state  = \"NY\",\n  county = ny_lookup$county_code, \n  year   = 2022,\n  survey = \"acs5\",\n  output = \"wide\"\n)\n\nrace_tract &lt;- race_tract %&gt;%\n  mutate(\n    white_pct    = if_else(total_popE &gt; 0, whiteE    / total_popE, NA_real_),\n    black_pct    = if_else(total_popE &gt; 0, blackE    / total_popE, NA_real_),\n    hispanic_pct = if_else(total_popE &gt; 0, hispanicE / total_popE, NA_real_)\n  )\n\nrace_tract &lt;- race_tract %&gt;%\n  mutate(\n    county_fips = str_sub(GEOID, 3, 5),\n    tract_id    = str_sub(GEOID, 6)\n  ) %&gt;%\n  left_join(ny_lookup, by = c(\"county_fips\" = \"county_code\")) %&gt;%\n  mutate(\n    tract_label = paste0(county_name, \" County – Tract \", tract_id)\n  )\n\nrace_tract %&gt;%\n  select(GEOID, tract_label, county_name,\n         total_popE, whiteE, blackE, hispanicE,\n         white_pct, black_pct, hispanic_pct) %&gt;%\n  arrange(county_name, tract_label) %&gt;%\n  head()\n\n# A tibble: 6 × 10\n  GEOID     tract_label county_name total_popE whiteE blackE hispanicE white_pct\n  &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;            &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n1 36001000… Albany Cou… Albany            2259    725    982       346     0.321\n2 36001000… Albany Cou… Albany            2465    372   1742       174     0.151\n3 36001000… Albany Cou… Albany            2374    317   1952        45     0.134\n4 36001000… Albany Cou… Albany            2837    678   1271       673     0.239\n5 36001000… Albany Cou… Albany            3200   1963    538       183     0.613\n6 36001000… Albany Cou… Albany            2301   2012    134        98     0.874\n# ℹ 2 more variables: black_pct &lt;dbl&gt;, hispanic_pct &lt;dbl&gt;"
+  },
+  {
+    "objectID": "assignments/assignment_1/assignment1_xiaoqing.html#demographic-analysis",
+    "href": "assignments/assignment_1/assignment1_xiaoqing.html#demographic-analysis",
+    "title": "Assignment 1: Census Data Quality for Policy Decisions",
+    "section": "3.3 Demographic Analysis",
+    "text": "3.3 Demographic Analysis\n\ntop_hispanic &lt;- race_tract %&gt;%\n  arrange(desc(hispanic_pct)) %&gt;%\n  slice(1)\n\ntop_hispanic\n\n# A tibble: 1 × 17\n  GEOID       NAME    whiteE whiteM blackE blackM hispanicE hispanicM total_popE\n  &lt;chr&gt;       &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;\n1 36001002000 Census…   2846    835   1460    445      1562       811       6576\n# ℹ 8 more variables: total_popM &lt;dbl&gt;, white_pct &lt;dbl&gt;, black_pct &lt;dbl&gt;,\n#   hispanic_pct &lt;dbl&gt;, county_fips &lt;chr&gt;, tract_id &lt;chr&gt;, county_name &lt;chr&gt;,\n#   tract_label &lt;chr&gt;\n\ncounty_summary &lt;- race_tract %&gt;%\n  group_by(county_name) %&gt;%\n  summarize(\n    n_tracts = n(),\n    avg_white_pct = mean(white_pct, na.rm = TRUE),\n    avg_black_pct = mean(black_pct, na.rm = TRUE),\n    avg_hispanic_pct = mean(hispanic_pct, na.rm = TRUE),\n  )\n\n\ncounty_summary &lt;- race_tract %&gt;%\n  kable(digits = 2, captison = \"Average Demographics by county (Albany, Hamilton, Schuyler)\")"
+  },
+  {
+    "objectID": "assignments/assignment_1/assignment1_xiaoqing.html#moe-analysis-for-demographic-variables",
+    "href": "assignments/assignment_1/assignment1_xiaoqing.html#moe-analysis-for-demographic-variables",
+    "title": "Assignment 1: Census Data Quality for Policy Decisions",
+    "section": "4.1 MOE Analysis for Demographic Variables",
+    "text": "4.1 MOE Analysis for Demographic Variables\n\ndemographic_moe &lt;- race_tract %&gt;%\n  mutate(\n    white_moe_pct    = if_else(is.na(whiteE)    | whiteE    == 0, NA_real_, 100 * whiteM    / whiteE),\n    black_moe_pct    = if_else(is.na(blackE)    | blackE    == 0, NA_real_, 100 * blackM    / blackE),\n    hispanic_moe_pct = if_else(is.na(hispanicE) | hispanicE == 0, NA_real_, 100 * hispanicM / hispanicE)\n  ) \n\ndemographic_moe &lt;- demographic_moe %&gt;%\n  mutate(\n    high_moe_flag = if_else(\n      white_moe_pct &gt; 10 | black_moe_pct &gt; 10 | hispanic_moe_pct &gt; 10,\n      TRUE, FALSE\n    )\n  )\n\nsummary_tracts &lt;- demographic_moe %&gt;%\n  summarise(\n    total_tracts    = n(),\n    high_moe_tracts = sum(high_moe_flag, na.rm = TRUE),\n    pct_high_moe    = 100 * mean(high_moe_flag, na.rm = TRUE)\n  )\nsummary_tracts\n\n# A tibble: 1 × 3\n  total_tracts high_moe_tracts pct_high_moe\n         &lt;int&gt;           &lt;int&gt;        &lt;dbl&gt;\n1           94              94          100"
+  },
+  {
+    "objectID": "assignments/assignment_1/assignment1_xiaoqing.html#pattern-analysis",
+    "href": "assignments/assignment_1/assignment1_xiaoqing.html#pattern-analysis",
+    "title": "Assignment 1: Census Data Quality for Policy Decisions",
+    "section": "4.2 Pattern Analysis",
+    "text": "4.2 Pattern Analysis\n\navg_characteristics &lt;- demographic_moe %&gt;%\n  group_by(high_moe_flag) %&gt;%\n  summarise(\n    avg_pop      = mean(total_popE, na.rm = TRUE),\n    avg_white    = mean(white_pct, na.rm = TRUE),\n    avg_black    = mean(black_pct, na.rm = TRUE),\n    avg_hispanic = mean(hispanic_pct, na.rm = TRUE),\n    n_tracts     = n()\n  )\n\navg_characteristics\n\n# A tibble: 1 × 6\n  high_moe_flag avg_pop avg_white avg_black avg_hispanic n_tracts\n  &lt;lgl&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt;    &lt;int&gt;\n1 TRUE            3596.     0.711     0.116       0.0607       94\n\n\nPattern Analysis: [Small tract populations would lead to a high MOE, so the related estimated are less reliable. On average, tracts flagged as high MOE only have nearly 3600 people, with minority groups like Hispanics accounting for only 6% of the total population.]"
+  },
+  {
+    "objectID": "assignments/assignment_1/assignment1_xiaoqing.html#analysis-integration-and-professional-summary",
+    "href": "assignments/assignment_1/assignment1_xiaoqing.html#analysis-integration-and-professional-summary",
+    "title": "Assignment 1: Census Data Quality for Policy Decisions",
+    "section": "5.1 Analysis Integration and Professional Summary",
+    "text": "5.1 Analysis Integration and Professional Summary\nExecutive Summary Requirements: 1. Overall Pattern Identification: What are the systematic patterns across all your analyses? 2. Equity Assessment: Which communities face the greatest risk of algorithmic bias based on your findings? 3. Root Cause Analysis: What underlying factors drive both data quality issues and bias risk? 4. Strategic Recommendations: What should the Department implement to address these systematic issues?\nExecutive Summary:\n[All 94 census tracts show at least one demographic group with MOE above 10%, indicating data reliability issues are widespread.For example, Albany County Tract 000100 has White MOE = 46.97%, Black MOE = 36.86%, and Hispanic MOE = 62.71%. Hispanic populations consistently show the highest MOEs, suggesting this group faces the greatest data reliability challenges.In many tracts, Hispanic MOEs exceed 60% or even 100%, while White and Black MOEs are also high but relatively lower. High MOE levels are largely driven by small population sizes in many tracts, which make reliable estimates difficult.On average, tracts flagged as high MOE have only about 3,596 people, with Hispanic populations averaging just 6%. Improving reliability requires either aggregating data or using multi-year ACS estimates to reduce sampling error.For example, combining smaller tracts or applying a population threshold before analysis would help minimize bias in Hispanic estimates.]"
+  },
+  {
+    "objectID": "assignments/assignment_1/assignment1_xiaoqing.html#specific-recommendations",
+    "href": "assignments/assignment_1/assignment1_xiaoqing.html#specific-recommendations",
+    "title": "Assignment 1: Census Data Quality for Policy Decisions",
+    "section": "6.3 Specific Recommendations",
+    "text": "6.3 Specific Recommendations\n\nlibrary(dplyr)\nlibrary(kableExtra)\nlibrary(knitr)\n\nkbl_safe &lt;- function(x, ...) {\n  tbl &lt;- knitr::kable(x, ...)\n  if (use_kableExtra) {\n    tbl &lt;- tbl %&gt;% kableExtra::kable_styling(\n      full_width = FALSE,\n      bootstrap_options = c(\"striped\",\"condensed\")\n    )\n  }\n  tbl\n}\n\nmoe_pct &lt;- function(margin, estimate) {\n  ifelse(is.na(estimate) | estimate == 0, NA_real_, 100 * margin / estimate)\n}\n\nrecommendations_data &lt;- ny_reliability %&gt;%\n  mutate(\n    income_moe_pct = if_else(is.na(median_incomeE) | median_incomeE == 0,\n                          NA_real_, 100 * median_incomeM / median_incomeE),\n\n  reliability_category = case_when(\n      !is.na(income_moe_pct) & income_moe_pct &lt;= 5   ~ \"High Confidence\",\n      !is.na(income_moe_pct) & income_moe_pct &lt;= 10  ~ \"Moderate Confidence\",\n      TRUE                                     ~ \"Low Confidence\"\n    ),\n  recommendation = case_when(\n      reliability_category == \"High Confidence\"     ~ \"Safe for algorithmic decisions\",\n      reliability_category == \"Moderate Confidence\" ~ \"Use with caution – monitor outcomes\",\n      reliability_category == \"Low Confidence\"      ~ \"Requires manual review or additional data\"\n    )\n  ) %&gt;%\n  transmute(\n    county_name,\n    median_income = median_incomeE,\n    income_moe_pct = round(income_moe_pct, 1),\n    reliability_category,\n    recommendation\n  )\n\nkable(recommendations_data,\n      col.names = c(\"County\",\"Median Income ($)\",\"Income MOE %\",\"Reliability\",\"Recommendation\"),\n      caption = \"Decision Framework for Algorithmic Implementation\")\n\n\nDecision Framework for Algorithmic Implementation\n\n\n\n\n\n\n\n\n\nCounty\nMedian Income ($)\nIncome MOE %\nReliability\nRecommendation\n\n\n\n\nAlbany\n78829\n2.6\nHigh Confidence\nSafe for algorithmic decisions\n\n\nAllegany\n58725\n3.3\nHigh Confidence\nSafe for algorithmic decisions\n\n\nBronx\n47036\n1.9\nHigh Confidence\nSafe for algorithmic decisions\n\n\nBroome\n58317\n3.0\nHigh Confidence\nSafe for algorithmic decisions\n\n\nCattaraugus\n56889\n3.1\nHigh Confidence\nSafe for algorithmic decisions\n\n\nCayuga\n63227\n4.3\nHigh Confidence\nSafe for algorithmic decisions\n\n\nChautauqua\n54625\n3.2\nHigh Confidence\nSafe for algorithmic decisions\n\n\nChemung\n61358\n4.0\nHigh Confidence\nSafe for algorithmic decisions\n\n\nChenango\n61741\n4.1\nHigh Confidence\nSafe for algorithmic decisions\n\n\nClinton\n67097\n4.2\nHigh Confidence\nSafe for algorithmic decisions\n\n\nColumbia\n81741\n3.4\nHigh Confidence\nSafe for algorithmic decisions\n\n\nCortland\n65029\n4.4\nHigh Confidence\nSafe for algorithmic decisions\n\n\nDelaware\n58338\n3.7\nHigh Confidence\nSafe for algorithmic decisions\n\n\nDutchess\n94578\n2.7\nHigh Confidence\nSafe for algorithmic decisions\n\n\nErie\n68014\n1.2\nHigh Confidence\nSafe for algorithmic decisions\n\n\nEssex\n68090\n5.3\nModerate Confidence\nUse with caution – monitor outcomes\n\n\nFranklin\n60270\n4.8\nHigh Confidence\nSafe for algorithmic decisions\n\n\nFulton\n60557\n4.4\nHigh Confidence\nSafe for algorithmic decisions\n\n\nGenesee\n68178\n4.6\nHigh Confidence\nSafe for algorithmic decisions\n\n\nGreene\n70294\n6.2\nModerate Confidence\nUse with caution – monitor outcomes\n\n\nHamilton\n66891\n11.4\nLow Confidence\nRequires manual review or additional data\n\n\nHerkimer\n68104\n4.8\nHigh Confidence\nSafe for algorithmic decisions\n\n\nJefferson\n62782\n3.6\nHigh Confidence\nSafe for algorithmic decisions\n\n\nKings\n74692\n1.3\nHigh Confidence\nSafe for algorithmic decisions\n\n\nLewis\n64401\n4.2\nHigh Confidence\nSafe for algorithmic decisions\n\n\nLivingston\n70443\n4.0\nHigh Confidence\nSafe for algorithmic decisions\n\n\nMadison\n68869\n4.0\nHigh Confidence\nSafe for algorithmic decisions\n\n\nMonroe\n71450\n1.4\nHigh Confidence\nSafe for algorithmic decisions\n\n\nMontgomery\n58033\n3.6\nHigh Confidence\nSafe for algorithmic decisions\n\n\nNassau\n137709\n1.4\nHigh Confidence\nSafe for algorithmic decisions\n\n\nNew York\n99880\n1.8\nHigh Confidence\nSafe for algorithmic decisions\n\n\nNiagara\n65882\n2.7\nHigh Confidence\nSafe for algorithmic decisions\n\n\nOneida\n66402\n3.3\nHigh Confidence\nSafe for algorithmic decisions\n\n\nOnondaga\n71479\n1.6\nHigh Confidence\nSafe for algorithmic decisions\n\n\nOntario\n76603\n2.9\nHigh Confidence\nSafe for algorithmic decisions\n\n\nOrange\n91806\n1.9\nHigh Confidence\nSafe for algorithmic decisions\n\n\nOrleans\n61069\n4.9\nHigh Confidence\nSafe for algorithmic decisions\n\n\nOswego\n65054\n3.3\nHigh Confidence\nSafe for algorithmic decisions\n\n\nOtsego\n65778\n4.5\nHigh Confidence\nSafe for algorithmic decisions\n\n\nPutnam\n120970\n4.0\nHigh Confidence\nSafe for algorithmic decisions\n\n\nQueens\n82431\n1.1\nHigh Confidence\nSafe for algorithmic decisions\n\n\nRensselaer\n83734\n2.3\nHigh Confidence\nSafe for algorithmic decisions\n\n\nRichmond\n96185\n2.6\nHigh Confidence\nSafe for algorithmic decisions\n\n\nRockland\n106173\n2.9\nHigh Confidence\nSafe for algorithmic decisions\n\n\nSt. Lawrence\n58339\n3.5\nHigh Confidence\nSafe for algorithmic decisions\n\n\nSaratoga\n97038\n2.3\nHigh Confidence\nSafe for algorithmic decisions\n\n\nSchenectady\n75056\n3.0\nHigh Confidence\nSafe for algorithmic decisions\n\n\nSchoharie\n71479\n4.0\nHigh Confidence\nSafe for algorithmic decisions\n\n\nSchuyler\n61316\n9.5\nModerate Confidence\nUse with caution – monitor outcomes\n\n\nSeneca\n64050\n5.2\nModerate Confidence\nUse with caution – monitor outcomes\n\n\nSteuben\n62506\n2.9\nHigh Confidence\nSafe for algorithmic decisions\n\n\nSuffolk\n122498\n1.2\nHigh Confidence\nSafe for algorithmic decisions\n\n\nSullivan\n67841\n4.4\nHigh Confidence\nSafe for algorithmic decisions\n\n\nTioga\n70427\n4.0\nHigh Confidence\nSafe for algorithmic decisions\n\n\nTompkins\n69995\n4.0\nHigh Confidence\nSafe for algorithmic decisions\n\n\nUlster\n77197\n4.5\nHigh Confidence\nSafe for algorithmic decisions\n\n\nWarren\n74531\n4.7\nHigh Confidence\nSafe for algorithmic decisions\n\n\nWashington\n68703\n3.4\nHigh Confidence\nSafe for algorithmic decisions\n\n\nWayne\n71007\n3.1\nHigh Confidence\nSafe for algorithmic decisions\n\n\nWestchester\n114651\n1.6\nHigh Confidence\nSafe for algorithmic decisions\n\n\nWyoming\n65066\n3.4\nHigh Confidence\nSafe for algorithmic decisions\n\n\nYates\n63974\n5.8\nModerate Confidence\nUse with caution – monitor outcomes\n\n\n\n\n\nrecommendations_data %&gt;% filter(reliability_category == “High Confidence”) recommendations_data %&gt;% filter(reliability_category == “Moderate Confidence”) recommendations_data %&gt;% filter(reliability_category == “Low Confidence”)\n\nCounties suitable for immediate algorithmic implementation: [All counties with MOE below 5% can be safely used for automated decisions. For example, Albany, Allegany, and Bronx all show income MOE between 3–4%, indicating strong reliability. Other counties of high confidence inculdes Broome, Cattaraugus, Cayuge, Chautauqua, Chemung, Chenango and Clinton.]\nCounties requiring additional oversight: [Counties with MOE between 5–10% should be used with caution and monitored for stability. For instance, Essex (5.3%), Greene (7.0%), and Schuyler (5.8%) fall into this category, suggesting periodic review of outcomes. Besides, Seneca and Yates are also included in this category.]\nCounties needing alternative approaches: [Counties with MOE above 10% require manual review or supplemental data. Only Hamilton shows an income MOE of 11.4%, which signals insufficient reliability for direct algorithmic use.]"
+  },
+  {
+    "objectID": "assignments/assignment_1/assignment1_xiaoqing.html#questions-for-further-investigation",
+    "href": "assignments/assignment_1/assignment1_xiaoqing.html#questions-for-further-investigation",
+    "title": "Assignment 1: Census Data Quality for Policy Decisions",
+    "section": "Questions for Further Investigation",
+    "text": "Questions for Further Investigation\n[1. How do MOE patterns differ between urban and rural counties, and what does this mean for equitable decision-making? 2. Do time trends (e.g., comparing single-year vs. five-year ACS data) change the reliability patterns we observed? 3. Are smaller minority populations systematically associated with higher MOEs, and how might improved sampling address this?]"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "MUSA 5080 Portfolio",
+    "section": "",
+    "text": "This portfolio documents my learning journey in Public Policy Analytics (MUSA 5080).\n\n\nAdvanced spatial analysis and data science for urban planning and public policy.\n\n\n\n\nWeekly Notes: My learning reflections and key concepts\nLabs: Completed assignments and analyses\nFinal Project: Capstone modeling challenge\n\n\n\n\n[Hi, i’m Xiaoqing, or u can call me Kelsey. Architecture was my undergraduate major, while as now i am learning MUSA at upenn. As for me, data analytics is more interesting and useful, so i think that’s the main reason why i want to learn more knowledge in PPA.]\n\n\n\n\nEmail: [chen007@upenn.edu]\nGitHub: [@XiaoqingChen-729]"
+  },
+  {
+    "objectID": "index.html#about-this-course",
+    "href": "index.html#about-this-course",
+    "title": "MUSA 5080 Portfolio",
+    "section": "",
+    "text": "Advanced spatial analysis and data science for urban planning and public policy."
+  },
+  {
+    "objectID": "index.html#portfolio-structure",
+    "href": "index.html#portfolio-structure",
+    "title": "MUSA 5080 Portfolio",
+    "section": "",
+    "text": "Weekly Notes: My learning reflections and key concepts\nLabs: Completed assignments and analyses\nFinal Project: Capstone modeling challenge"
+  },
+  {
+    "objectID": "index.html#about-me",
+    "href": "index.html#about-me",
+    "title": "MUSA 5080 Portfolio",
+    "section": "",
+    "text": "[Hi, i’m Xiaoqing, or u can call me Kelsey. Architecture was my undergraduate major, while as now i am learning MUSA at upenn. As for me, data analytics is more interesting and useful, so i think that’s the main reason why i want to learn more knowledge in PPA.]"
+  },
+  {
+    "objectID": "index.html#contact",
+    "href": "index.html#contact",
+    "title": "MUSA 5080 Portfolio",
+    "section": "",
+    "text": "Email: [chen007@upenn.edu]\nGitHub: [@XiaoqingChen-729]"
+  },
+  {
+    "objectID": "weekly-notes/week-01-notes.html",
+    "href": "weekly-notes/week-01-notes.html",
+    "title": "Week 1 Notes - Course Introduction",
+    "section": "",
+    "text": "[Repo - Commit - Push - Pull]\n[Cloud hosting for Git reposiories]"
+  },
+  {
+    "objectID": "weekly-notes/week-01-notes.html#key-concepts-learned",
+    "href": "weekly-notes/week-01-notes.html#key-concepts-learned",
+    "title": "Week 1 Notes - Course Introduction",
+    "section": "",
+    "text": "[Repo - Commit - Push - Pull]\n[Cloud hosting for Git reposiories]"
+  },
+  {
+    "objectID": "weekly-notes/week-01-notes.html#coding-techniques",
+    "href": "weekly-notes/week-01-notes.html#coding-techniques",
+    "title": "Week 1 Notes - Course Introduction",
+    "section": "Coding Techniques",
+    "text": "Coding Techniques\n\n[Definitely VS code & GitHub]\n[The intro of coding and R studio]"
+  },
+  {
+    "objectID": "weekly-notes/week-01-notes.html#questions-challenges",
+    "href": "weekly-notes/week-01-notes.html#questions-challenges",
+    "title": "Week 1 Notes - Course Introduction",
+    "section": "Questions & Challenges",
+    "text": "Questions & Challenges\n\n[How can i find the realted original code that i need?]\n[I guess we need more practice because practice makes perfect]"
+  },
+  {
+    "objectID": "weekly-notes/week-01-notes.html#connections-to-policy",
+    "href": "weekly-notes/week-01-notes.html#connections-to-policy",
+    "title": "Week 1 Notes - Course Introduction",
+    "section": "Connections to Policy",
+    "text": "Connections to Policy\n\n[I am still looking for the real way to connect knowledge to policy]"
+  },
+  {
+    "objectID": "weekly-notes/week-01-notes.html#reflection",
+    "href": "weekly-notes/week-01-notes.html#reflection",
+    "title": "Week 1 Notes - Course Introduction",
+    "section": "Reflection",
+    "text": "Reflection\n\n[Loving work with my group & PPA is great!]\n[Weely notes are written on my notebook.]"
+  },
+  {
+    "objectID": "weekly-notes/week-03-notes.html",
+    "href": "weekly-notes/week-03-notes.html",
+    "title": "Week 3 Notes",
+    "section": "",
+    "text": "[Previous: proxy; Decennial Census/ ACX data; Algorithmic desicion-making]\n[Current: Datra Visualization & Exploratory Analysis; Grammar of Graphics; Exploring Data Analysis]"
+  },
+  {
+    "objectID": "weekly-notes/week-03-notes.html#key-concepts-learned",
+    "href": "weekly-notes/week-03-notes.html#key-concepts-learned",
+    "title": "Week 3 Notes",
+    "section": "",
+    "text": "[Previous: proxy; Decennial Census/ ACX data; Algorithmic desicion-making]\n[Current: Datra Visualization & Exploratory Analysis; Grammar of Graphics; Exploring Data Analysis]"
+  },
+  {
+    "objectID": "weekly-notes/week-03-notes.html#weekly-notes-picture",
+    "href": "weekly-notes/week-03-notes.html#weekly-notes-picture",
+    "title": "Week 3 Notes",
     "section": "Weekly notes picture",
-    "text": "Weekly notes picture\n\n[Here’s the jpg of my notes]"
+    "text": "Weekly notes picture\n\n[Here’s the jpgs of my notes]"
   }
 ]
