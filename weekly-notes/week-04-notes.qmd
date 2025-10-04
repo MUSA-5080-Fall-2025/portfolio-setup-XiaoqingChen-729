@@ -8,7 +8,7 @@ date: "2025-09-29"
 - [Current: Spatial Data Fundamentals; Geographic Coordinate Systems]
 
 ## Weekly notes picture
-- [Here's the jpgs of my notes]
+- [Here's two jpgs of my notes]
 ![Week 4 Note](week-04-notes-1.jpg){width=80%}
 
 ![Week 4 Note](week-04-notes-2.jpg){width=80%}

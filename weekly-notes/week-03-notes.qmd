@@ -8,6 +8,6 @@ date: "2025-09-22"
 - [Current: Datra Visualization & Exploratory Analysis; Grammar of Graphics; Exploring Data Analysis]
 
 ## Weekly notes picture
-- [Here's the jpgs of my notes]
+- [Here's two jpgs of my notes]
 ![Week 3 Note](week-03-notes-1.jpg){width=80%}
 ![Week 3 Note](week-03-notes-2.jpg){width=80%}
