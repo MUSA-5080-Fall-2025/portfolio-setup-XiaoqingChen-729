@@ -9,6 +9,6 @@ date: "2025-09-29"
 
 ## Weekly notes picture
 - [Here's the jpgs of my notes]
-![Week 3 Note](week-04-notes-1.jpg){width=80%}
+![Week 4 Note](week-04-notes-1.jpg){width=80%}
 
-![Week 3 Note](week-04-notes-2.jpg){width=80%}
+![Week 4 Note](week-04-notes-2.jpg){width=80%}
