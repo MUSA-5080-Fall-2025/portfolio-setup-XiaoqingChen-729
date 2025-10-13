@@ -1,0 +1,13 @@
+---
+title: "Week 5 Notes"
+date: "2025-10-06"
+---
+
+## Key Concepts Learned
+- [Previous: st_set_crs(); st_intersection; st_filter]
+- [Current: Intro to Linear Regression; Two different Goals: prediction & inference; building model; model evaluation; checking assumption]
+
+## Weekly notes picture
+- [Here's two jpgs of my notes]
+![Week 5 Note](week-05-notes-1.jpg){width=80%}
+![Week 5 Note](week-05-notes-2.jpg){width=80%}
