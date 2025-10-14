@@ -24,6 +24,9 @@ website:
         menu:
           - href: assignments/assignment_1/assignment1_xiaoqing.qmd
             text: "Assignment 1: Census Data Exploration"
+          - href: assignments/assignment_2/Chen_Xiaoqing_Assignment2.qmd
+            text: "Assignment 2: Spatial Analysis and Visualization"
+
 
 
 format:

@@ -1,0 +1,11 @@
+---
+title: "Week 6 Notes"
+date: "2025-10-13"
+---
+
+## Key Concepts Learned
+- [Current: Converting to spatial data; The V-shaped age effect; Three approaches to spatial features]
+
+## Weekly notes picture
+- [Here's the jpg of my notes]
+![Week 6 Note](week-06-notes.jpg){width=80%}
