@@ -58,9 +58,9 @@ census_api_key(Sys.getenv("e17c1c6ce413dc3faca31a17a58ab3374404bb9e"), install =
 
 # Load spatial data
 
-pa_counties <- st_read("D:/Code/MUSA-5080-Fall-2025/labs/lab_2/data/Pennsylvania_County_Boundaries.shp")
-pa_hospitals <- st_read("D:/Code/MUSA-5080-Fall-2025/labs/lab_2/data/hospitals.geojson")
-pa_tracts <- st_read("D:/Code/MUSA-5080-Fall-2025/labs/lab_2/data/districts.geojson")
+pa_counties <- st_read("data/Pennsylvania_County_Boundaries.shp")
+pa_hospitals <- st_read("data/hospitals.geojson")
+pa_tracts <- st_read("data/districts.geojson")
 
 # Check that all data loaded correctly
 class(pa_counties)
@@ -192,7 +192,7 @@ For each vulnerable tract, calculate the distance to the nearest hospital.
 **Your Task:**
 ```{r}
 # Transform to appropriate projected CRS
-pa_hospitals <- st_read("D:/Code/MUSA-5080-Fall-2025/labs/lab_2/data/hospitals.geojson")
+pa_hospitals <- st_read("data/hospitals.geojson")
 vulnerable_tracts_proj <- st_transform(vulnerable_tracts, 26918)
 pa_hospitals_proj <- st_transform(pa_hospitals, 26918)
 
@@ -259,9 +259,29 @@ Use spatial joins and aggregation to calculate county-level statistics about vul
 **Your Task:**
 ```{r}
 # Spatial join tracts to counties
+pa_counties <- st_read("data/Pennsylvania_County_Boundaries.shp")
+pa_counties_proj <- st_transform(pa_counties, 26918)
+
 counties_index <- pa_counties_proj %>%
   st_drop_geometry() %>%
   distinct(county_geoid = FIPS_COUNT, county_name = COUNTY_NAM)
+
+vuln_with_county <- sf::st_join(
+  vulnerable_tracts_proj,                     
+  pa_counties_proj %>% dplyr::select(
+    county_geoid = FIPS_COUNT, county_name = COUNTY_NAM
+  ),
+  join = sf::st_within, left = TRUE
+)
+
+county_stats <- vuln_with_county %>%
+  st_drop_geometry() %>%
+  group_by(county_geoid, county_name) %>%
+  summarise(
+    num_vulnerable  = n(),
+    num_underserved = sum(underserved, na.rm = TRUE),
+    avg_dist_miles  = mean(dist_to_nearest_hospital_miles, na.rm = TRUE)
+  )
 
 library(tidyr)
 
@@ -297,7 +317,7 @@ top5_by_count
 - Total vulnerable population
 
 **Questions to answer:**
-- Which 5 counties have the highest percentage of underserved vulnerable tracts?  【The five counties with the highest percentage of underserved vulnerable tracts are Sullivan, Cameron, Forest, Monroe, and Potter Counties.】
+- Which 5 counties have the highest percentage of underserved vulnerable tracts?  【The five counties with the highest percentage of underserved vulnerable tracts are Cameron, Monroe, Clearfield, Bardford, and Erie Counties.】
 - Which counties have the most vulnerable people living far from hospitals?  【CLEARFIELD】
 - Are there any patterns in where underserved counties are located?  【Underserved counties are mainly concentrated in the northern and central rural regions of Pennsylvania. In contrast, urban counties like Philadelphia and Allegheny have few or no underserved tracts because hospitals are more densely distributed.】
 
@@ -359,6 +379,9 @@ library(ggplot2)
 library(sf)
 library(viridis)
 
+county_map <- pa_counties_proj %>%
+  left_join(county_stats_all, by = c("FIPS_COUNT" = "county_geoid", "COUNTY_NAM" = "county_name"))
+
 grey_blue <- c(
   "#F4F6F6", 
   "#D8E0E5", 
@@ -374,7 +397,7 @@ ggplot() +
   geom_sf(data = county_map, aes(fill = pct_underserved), color = "white", size = 0.2) +
   geom_sf(data = pa_hospitals_proj, color = "grey30", size = 0.8, alpha = 0.5) +
   scale_fill_gradientn(
-    colours = soft_palette,
+    colours = grey_blue,
     name = "% Underserved",
     limits = c(0, 100),
     labels = scales::percent_format(scale = 1),
