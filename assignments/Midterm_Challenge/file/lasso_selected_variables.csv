@@ -1,0 +1,13 @@
+variable,coefficient
+number_of_bathrooms,0.8755075217703978
+total_livable_area,0.7774873623879136
+hospitals_15min_walk,0.17026393941473156
+number_of_bedrooms,-0.12300886434219177
+dist_to_hospital_ft,-0.02807773742332935
+dist_to_park_ft,0.026001905358659955
+park_within_15min_walk,0.022742344031702593
+PCTPOVERTY,-0.022034178308142763
+dist_transit_ft,-0.01939158434603604
+dist_to_nearest_school_ft,-0.010091775155972253
+schools_within_15min_walk,-0.0037205632672062173
+total_popE,-1.5148037098289569e-5
