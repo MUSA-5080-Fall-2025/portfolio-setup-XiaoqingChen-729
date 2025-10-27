@@ -4,7 +4,7 @@ date: "2025-10-13"
 ---
 
 ## Key Concepts Learned
-- [Converting to spatial data; The V-shaped age effect; Three approaches to spatial features]
+- [Current: Converting to spatial data; The V-shaped age effect; Three approaches to spatial features]
 
 ## Weekly notes picture
 - [Here's the jpg of my notes]
