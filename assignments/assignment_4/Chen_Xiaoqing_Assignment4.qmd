@@ -113,14 +113,23 @@ cat("  - Date range:", min(burglaries$Date, na.rm = TRUE), "to",
 ```
 
 **Question 1.1:** 
+
 How many burglaries are in the data set? 
+
 -There are 7482 burglaries in the data set.
+
 What time period does this cover? 
+
 -Jan 1, 2017- Jan 1, 2018.
+
 Why does the coordinate reference system matter for our spatial analysis? 
+
 -It minimizes distortion in this region
+
 -Uses feet (common in US planning)
+
 -Allows accurate distance calculations
+
 
 ## Visualize Point Data
 
@@ -166,13 +175,21 @@ p1 + p2 +
 ```
 
 **Question 1.2:** 
+
 What spatial patterns do you observe? 
--The overall pattern of burglaries are clustered, but 
+
+-The overall pattern of burglaries are clustered.
+
 Are burglaries evenly distributed across Chicago? 
+
 -I think it is not evenly distributed because it is empty in the south-east corner.
+
 Where are the highest concentrations? What might explain these patterns? 
+
 -A north-side hot spot and a south-side hots pot can be seen as the highest concentrations.
+
 -Possible reasons: Higher density and foot traffic (commercial&residential mix); neighborhoods (housing stock); reporting patterns
+
 
 # Part 2: Fishnet Grid Creation
 
@@ -195,11 +212,17 @@ cat("  - Cell size:", 500, "x", 500, "meters\n")
 cat("  - Cell area:", round(st_area(fishnet[1,])), "square meters\n")
 ```
 **Question 2.1:** 
+
 Why do we use a regular grid instead of existing boundaries like neighborhoods or census tracts? 
+
 -Use neutral, equal-area spatial units to aggregate events consistently across the city, independent of administrative boundaries. 
+
 What are the advantages and disadvantages of this approach?
+
 -Advantages: fair comparison with the equal area; stable with less boundary bias; model-friendly features
+
 -Disadvantages: lack social meaning because of spilting real neighborhoods; alignment with other data; edge effects weight more
+
 
 ## Aggregate your violations to grid cells
 
@@ -244,11 +267,17 @@ ggplot() +
 ```
 
 **Question 2.2:** 
+
 What is the distribution of burglary counts across cells? 
+
 -The pattern is clustered, with two clear hot spots which can be seen in the north-side and south-side center. Many 500×500 m cells have 0–1 incidents（especially in the south-east corner), a smaller share have 5–10, and only a few hot spots reach 20–40+.
+
 Why do so many cells have zero burglaries? Is this distribution suitable for count regression? (Hint: look up over dispersion)
+
 -Land-use and population heterogeneity: parks, industrial areas, low-density neighborhoods, and edge cells have few potential targets.
+
 -Small spatial: burglaries are rare at the cell level, so many cells register 0.
+
 
 # Part 3: Spatial Features
 
@@ -305,9 +334,13 @@ ggplot() +
 
 **Question 3.1:** 
 How does the KDE map compare to the count map? 
+
 -Both maps reveal the same two dominant hot spots and show the similar pattern. The count map preservers exact per-cell counts and shows many 0, while the KDE map is continuous and smoother because it is less sensitive to how the grid is aligned.
+
 What does KDE capture well? What does it miss?
+
 -It can capture the overall intensity surface and the hot spots well, but it miss the true zero-pattern and it may be over-smooth.
+
 
 # Part 4: Create Spatial Predictor Variables
 
@@ -326,12 +359,18 @@ cat("  - Number of calls:", nrow(rodent_baiting), "\n")
 ```
 
 **Consider:** 
+
 How might the 311 reporting system itself be biased? 
+
 -It might has selection and access bias, there are always a few people who don't care about these things.
 Who calls 311?
+
 -The people who have internet access or smartphones, are good at English, highly trust in government.
+
 What neighborhoods have better 311 awareness?
+
 -It might be the neighborhoods with higher income, better educated and high-internet.
+
 
 ## 4.2: Count of Abandoned Cars per Cell
 
@@ -370,10 +409,15 @@ p1 + p2 +
 ```
 
 **Question 4.1:** 
+
 Do you see a visual relationship between rodent baiting and burglaries? 
+
 -Only parts of the map show the similar pattern. The north-central band shows noticeable co-location, while the south-central band isn't match another well.
+
 What does this suggest?
+
 -Any association can be weak to localized and likely confounded by reporting propensity and land use. So we need to take more issues into consideration instead of only treat rodents calls as a predictor.
+
 
 ## 4.3: Nearest Neighbor Features
 
@@ -394,12 +438,19 @@ summary(fishnet$abandoned_cars.nn)
 ```
 
 **Question 4.2:** 
+
 What does a low value of `rodent_baiting.nn` mean? 
+
 -It means the mean distance (in meters) from a cell’s centro id to its 3 nearest rodent-baiting calls is small, so high local concentration of rodent reports around that cell.
+
 A high value? 
+
 -It means the mean distance (in meters) from a cell’s centro id to its 3 nearest rodent-baiting calls is large, so rodent reports are spars nearby.
+
 Why might this be informative?
+
 -Because we can track the local density feature by a less sensitive way to grid edges than counts. It can also give information to present neighborhood conditions.
+
 
 ## 4.4: Distance to Hot Spots
 
@@ -485,10 +536,15 @@ if (nrow(hotspots) > 0) {
 ```
 
 **Question 4.3:** 
+
 Why might distance to a cluster of rodent baiting be more informative than distance to a single rodent baiting? 
+
 -A single 311 call can be noisy or isolated, while a cluster of calls reflects a persistent, neighborhood-level concentration which reduces outliers to some degree.
+
 What does Local Moran's I tell us?
+
 -It measures local spatial autocorrelation, flagging where values are similar to neighbors (Hot spots: High–High; Cold spots: Low–Low) or spatial outliers (High–Low, Low–High), with significance tests based on the chosen spatial weights/scale.
+
 
 # Part 5: Join Police Districts for Cross-Validation
 
@@ -545,14 +601,23 @@ summary(model_poisson)
 ```
 
 **Question 6.1:** 
+
 Interpret the coefficients. 
+
 -rodent_baiting: positive & significant (β = 0.000228, p ≈ 0.012).
+
 -rodent_baiting.nn: negative & significant (β = −0.000347, p < 0.001).
+
 -dist_to_hotspot: not significant (β ≈ 0.0000037, p ≈ 0.50).
+
 Which variables are significant? 
+
 -rodent_baiting and rodent_baiting.nn, because the p-value of dist_to_hotspot is higher than 0.05.
+
 What do the signs (positive/negative) tell you?
+
 -positive coefficient means each +1 unit multiplies the expected count by exp(β)(>1).
+
 
 ## 6.2: Check for Overdispersion
 
@@ -587,10 +652,15 @@ cat("Negative Binomial AIC:", round(AIC(model_nb), 1), "\n")
 ```
 
 **Question 6.2:** 
+
 Which model fits better (lower AIC)? 
+
 - Negative Binomial AIC is lower.
+
 What does this tell you about the data?
+
 -The reference on how to choose a better model.
+
 
 # Part 7: Spatial Cross-Validation
 
@@ -659,10 +729,15 @@ cv_results %>%
 ```
 
 **Question 7.1:** 
+
 Why is spatial CV more appropriate than random CV for this problem? 
+
 -Because 311 calls is spatially autocorrelated, and random CV can cause sptial leakage and wrong residual.
+
 Which districts were hardest to predict?
+
 -Test_district 3 because it has the highest MAE and RMSE.
+
 
 # Part 8: Model Predictions and Comparison
 
@@ -745,12 +820,19 @@ comparison %>%
 ```
 
 **Question 8.1:** 
+
 Does the complex model outperform the simple KDE baseline? 
+
 -No.Compared to the MAE and RMSE, KDE baseline performs better with lower numbers.
+
 By how much? 
+
 -KDE baseline's MAE is 0.30 higher and RMSE is 0.54 higher.
+
 Is the added complexity worth it?
+
 -The complex model is worse than the simple KDE, so the extra complexity isn’t justified for pure prediction on 2017.
+
 
 ## 8.3: Where Does the Model Work Well?
 
@@ -789,12 +871,19 @@ p1 + p2
 ```
 
 **Question 8.2:** 
+
 Where does the model make the biggest errors? 
+
 -Clear under-prediction clusters is presented in the north and south center, with the dark red spots.Moreover, over-prediction clusters is presented in the north-west direction, with the dark blue spots.
+
 Are there spatial patterns in the errors?
+
 -Errors are systematic, not random, which means there is spatial non-stationarity and that rodent-311 features don’t explain burglary well in the south-east.
+
 What might this reveal?
+
 -This likely reflects 311 reporting bias and missing other context.
+
 
 # Part 9: Summary Statistics and Tables
 
@@ -824,27 +913,37 @@ Based on your analysis, complete this summary:
 **Technical Performance:**
 
 -   Cross-validation MAE: `r round(mean(cv_results$mae), 2)`
+
 -   Model vs. KDE: \[KDE\]
+
 -   Most predictive variable: \[rodent_baiting.nn, β=-0.008978405\]
 
 **Spatial Patterns:**
 
 -   Burglaries are \[clustered\]
+
 -   Hot spots are located in \[north-central and south-central part\]
+
 -   Model errors show \[systematic\] patterns
 
 **Model Limitations:**
 
 -   Overdispersion: \[Yes\]
+
 -   Spatial autocorrelation in residuals: \[Yes, residuals form contiguous clusters.\]
+
 -   Cells with zero counts: \[311 calls:14.4%; burglaries:24.2%\]
 
 # Conclusion and Next Steps
+
 Conclusion:
+
 -Burglaries and 311 calls is clustered, ususally have correlationship.
+
 -KDE beats the model. 
 
 Next steps:
+
 -Enrich features and spatial structure, adding more predictors to make model more accurate and better.
 
 
