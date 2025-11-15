@@ -1,0 +1,12 @@
+---
+title: "Week 10 Notes"
+date: "2025-11-10"
+---
+
+## Key Concepts Learned
+- [Current: Logist model]
+
+## Weekly notes picture
+- [Here's two jpgs of my notes]
+![Week 10 Note](week-10-notes-1.jpg){width=80%}
+![Week 10 Note](week-10-notes-2.jpg){width=80%}

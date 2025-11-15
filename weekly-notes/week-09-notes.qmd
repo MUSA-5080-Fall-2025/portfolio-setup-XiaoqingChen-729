@@ -1,0 +1,11 @@
+---
+title: "Week 9 Notes"
+date: "2025-11-10"
+---
+
+## Key Concepts Learned
+- [Current: Spatial log model; spatial error model]
+
+## Weekly notes picture
+- [Here's the jpg of my notes]
+![Week 9 Note](week-09-notes.jpg){width=80%}

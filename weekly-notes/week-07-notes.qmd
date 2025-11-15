@@ -1,0 +1,11 @@
+---
+title: "Week 7 Notes"
+date: "2025-10-20"
+---
+
+## Key Concepts Learned
+- [Current: Regression]
+
+## Weekly notes picture
+- [Here's the jpg of my notes]
+![Week 7 Note](week-07-notes.jpg){width=80%}
