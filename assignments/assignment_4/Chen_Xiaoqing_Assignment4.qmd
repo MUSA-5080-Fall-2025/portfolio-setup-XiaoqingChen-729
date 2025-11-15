@@ -1,0 +1,851 @@
+---
+title: "Spatial Predictive Analysis"
+subtitle: "Using different 311 service request typies to build spatial predictive model"
+author: "Xiaoqing (Kelsey) Chen"
+date: today
+format:
+  html:
+    code-fold: show
+    code-tools: true
+    toc: true
+    toc-depth: 3
+    toc-location: left
+    theme: cosmo
+    embed-resources: true
+editor: visual
+execute:
+  warning: false
+  message: false
+---
+
+# Setup
+
+```{r setup}
+#| message: false
+#| warning: false
+
+# Load required packages
+library(tidyverse)      # Data manipulation
+library(sf)             # Spatial operations
+library(here)           # Relative file paths
+library(viridis)        # Color scales
+library(terra)          # Raster operations (replaces 'raster')
+library(spdep)          # Spatial dependence
+library(FNN)            # Fast nearest neighbors
+library(MASS)           # Negative binomial regression
+library(patchwork)      # Plot composition (replaces grid/gridExtra)
+library(knitr)          # Tables
+library(kableExtra)     # Table formatting
+library(classInt)       # Classification intervals
+library(here)
+
+# Spatstat split into sub-packages
+library(spatstat.geom)    # Spatial geometries
+library(spatstat.explore) # Spatial exploration/KDE
+
+# Create consistent theme for visualizations
+theme_crime <- function(base_size = 11) {
+  theme_minimal(base_size = base_size) +
+    theme(
+      plot.title = element_text(face = "bold", size = base_size + 1),
+      plot.subtitle = element_text(color = "gray30", size = base_size - 1),
+      legend.position = "right",
+      panel.grid.minor = element_blank(),
+      axis.text = element_blank(),
+      axis.title = element_blank()
+    )
+}
+
+# Set as default
+theme_set(theme_crime())
+
+cat("✓ All packages loaded successfully!\n")
+cat("✓ Working directory:", getwd(), "\n")
+```
+
+# Part 1: Data Loading & Exploration
+
+This step is to load spatial and burglary data of Chicago and use the proper transform code.
+
+## Load Chicago Spatial Data
+
+```{r load-boundaries}
+#| message: false
+
+# Load police districts (used for spatial cross-validation)
+policeDistricts <- 
+  st_read("https://data.cityofchicago.org/api/geospatial/24zt-jpfn?method=export&format=GeoJSON") %>%
+  st_transform('ESRI:102271') %>%
+  dplyr::select(District = dist_num)
+
+# Load police beats (smaller administrative units)
+policeBeats <- 
+  st_read("https://data.cityofchicago.org/api/geospatial/n9it-hstw?method=export&format=GeoJSON") %>%
+  st_transform('ESRI:102271') %>%
+  dplyr::select(Beat = beat_num)
+
+# Load Chicago boundary
+chicagoBoundary <- 
+  st_read("https://raw.githubusercontent.com/urbanSpatial/Public-Policy-Analytics-Landing/master/DATA/Chapter5/chicagoBoundary.geojson") %>%
+  st_transform('ESRI:102271')
+
+cat("✓ Loaded spatial boundaries\n")
+cat("  - Police districts:", nrow(policeDistricts), "\n")
+cat("  - Police beats:", nrow(policeBeats), "\n")
+```
+
+## Load Burglary Data
+
+```{r load-burglaries}
+#| message: false
+
+# Load from provided data file (downloaded from Chicago open data portal)
+burglaries <- st_read("D:/Code/musa-5080-fall-2025-portfolio-setup-student-portfolio-template/portfolio-setup-XiaoqingChen-729/assignments/assignment_4/data") %>% 
+  st_transform('ESRI:102271')
+
+# Check the data
+cat("\n✓ Loaded burglary data\n")
+cat("  - Number of burglaries:", nrow(burglaries), "\n")
+cat("  - CRS:", st_crs(burglaries)$input, "\n")
+cat("  - Date range:", min(burglaries$Date, na.rm = TRUE), "to", 
+    max(burglaries$Date, na.rm = TRUE), "\n")
+
+```
+
+**Question 1.1:** 
+How many burglaries are in the data set? 
+-There are 7482 burglaries in the data set.
+What time period does this cover? 
+-Jan 1, 2017- Jan 1, 2018.
+Why does the coordinate reference system matter for our spatial analysis? 
+-It minimizes distortion in this region
+-Uses feet (common in US planning)
+-Allows accurate distance calculations
+
+## Visualize Point Data
+
+```{r visualize-points}
+#| fig-width: 10
+#| fig-height: 5
+
+# Simple point map
+p1 <- ggplot() + 
+  geom_sf(data = chicagoBoundary, fill = "gray95", color = "gray60") +
+  geom_sf(data = burglaries, color = "#d62828", size = 0.1, alpha = 0.4) +
+  labs(
+    title = "Burglary Locations",
+    subtitle = paste0("Chicago 2017, n = ", nrow(burglaries))
+  )
+
+# Density surface using modern syntax
+p2 <- ggplot() + 
+  geom_sf(data = chicagoBoundary, fill = "gray95", color = "gray60") +
+  geom_density_2d_filled(
+    data = data.frame(st_coordinates(burglaries)),
+    aes(X, Y),
+    alpha = 0.7,
+    bins = 8
+  ) +
+  scale_fill_viridis_d(
+    option = "plasma",
+    direction = -1,
+    guide = "none"  # Modern ggplot2 syntax (not guide = FALSE)
+  ) +
+  labs(
+    title = "Density Surface",
+    subtitle = "Kernel density estimation"
+  )
+
+# Combine plots using patchwork (modern approach)
+p1 + p2 + 
+  plot_annotation(
+    title = "Spatial Distribution of Burglaries in Chicago",
+    tag_levels = 'A'
+  )
+
+```
+
+**Question 1.2:** 
+What spatial patterns do you observe? 
+-The overall pattern of burglaries are clustered, but 
+Are burglaries evenly distributed across Chicago? 
+-I think it is not evenly distributed because it is empty in the south-east corner.
+Where are the highest concentrations? What might explain these patterns? 
+-A north-side hot spot and a south-side hots pot can be seen as the highest concentrations.
+-Possible reasons: Higher density and foot traffic (commercial&residential mix); neighborhoods (housing stock); reporting patterns
+
+# Part 2: Fishnet Grid Creation
+
+## Create 500m x 500m grid
+
+```{r}
+fishnet <- st_make_grid(
+  chicagoBoundary,
+  cellsize = 500,  # 500 meters per cell
+  square = TRUE
+) %>%
+  st_sf() %>%
+  mutate(uniqueID = row_number())
+
+fishnet <- fishnet[chicagoBoundary, ]
+
+cat("✓ Created fishnet grid\n")
+cat("  - Number of cells:", nrow(fishnet), "\n")
+cat("  - Cell size:", 500, "x", 500, "meters\n")
+cat("  - Cell area:", round(st_area(fishnet[1,])), "square meters\n")
+```
+**Question 2.1:** 
+Why do we use a regular grid instead of existing boundaries like neighborhoods or census tracts? 
+-Use neutral, equal-area spatial units to aggregate events consistently across the city, independent of administrative boundaries. 
+What are the advantages and disadvantages of this approach?
+-Advantages: fair comparison with the equal area; stable with less boundary bias; model-friendly features
+-Disadvantages: lack social meaning because of spilting real neighborhoods; alignment with other data; edge effects weight more
+
+## Aggregate your violations to grid cells
+
+```{r aggregate-burglaries}
+burglaries_fishnet <- st_join(burglaries, fishnet, join = st_within) %>%
+  st_drop_geometry() %>%
+  group_by(uniqueID) %>%
+  summarize(countBurglaries = n())
+
+fishnet <- fishnet %>%
+  left_join(burglaries_fishnet, by = "uniqueID") %>%
+  mutate(countBurglaries = replace_na(countBurglaries, 0))
+
+cat("\nBurglary count distribution:\n")
+summary(fishnet$countBurglaries)
+cat("\nCells with zero burglaries:", 
+    sum(fishnet$countBurglaries == 0), 
+    "/", nrow(fishnet),
+    "(", round(100 * sum(fishnet$countBurglaries == 0) / nrow(fishnet), 1), "%)\n")
+
+```
+
+```{r visualize-fishnet}
+#| fig-width: 8
+#| fig-height: 6
+
+ggplot() +
+  geom_sf(data = fishnet, aes(fill = countBurglaries), color = NA) +
+  geom_sf(data = chicagoBoundary, fill = NA, color = "white", linewidth = 1) +
+  scale_fill_viridis_c(
+    name = "Burglaries",
+    option = "plasma",
+    trans = "sqrt",  # Square root for better visualization of skewed data
+    breaks = c(0, 1, 5, 10, 20, 40)
+  ) +
+  labs(
+    title = "Burglary Counts by Grid Cell",
+    subtitle = "500m x 500m cells, Chicago 2017"
+  ) +
+  theme_crime()
+
+```
+
+**Question 2.2:** 
+What is the distribution of burglary counts across cells? 
+-The pattern is clustered, with two clear hot spots which can be seen in the north-side and south-side center. Many 500×500 m cells have 0–1 incidents（especially in the south-east corner), a smaller share have 5–10, and only a few hot spots reach 20–40+.
+Why do so many cells have zero burglaries? Is this distribution suitable for count regression? (Hint: look up over dispersion)
+-Land-use and population heterogeneity: parks, industrial areas, low-density neighborhoods, and edge cells have few potential targets.
+-Small spatial: burglaries are rare at the cell level, so many cells register 0.
+
+# Part 3: Spatial Features
+
+```{r kde-baseline}
+#| message: false
+
+# Convert burglaries to ppp (point pattern) format for spatstat
+burglaries_ppp <- as.ppp(
+  st_coordinates(burglaries),
+  W = as.owin(st_bbox(chicagoBoundary))
+)
+
+# Calculate KDE with 1km bandwidth
+kde_burglaries <- density.ppp(
+  burglaries_ppp,
+  sigma = 1000,  # 1km bandwidth
+  edge = TRUE    # Edge correction
+)
+
+# Convert to terra raster (modern approach, not raster::raster)
+kde_raster <- rast(kde_burglaries)
+
+# Extract KDE values to fishnet cells
+fishnet <- fishnet %>%
+  mutate(
+    kde_value = terra::extract(
+      kde_raster,
+      vect(fishnet),
+      fun = mean,
+      na.rm = TRUE
+    )[, 2]  # Extract just the values column
+  )
+
+cat("✓ Calculated KDE baseline\n")
+```
+
+```{r visualize-kde}
+#| fig-width: 8
+#| fig-height: 6
+
+ggplot() +
+  geom_sf(data = fishnet, aes(fill = kde_value), color = NA) +
+  geom_sf(data = chicagoBoundary, fill = NA, color = "white", linewidth = 1) +
+  scale_fill_viridis_c(
+    name = "KDE Value",
+    option = "plasma"
+  ) +
+  labs(
+    title = "Kernel Density Estimation Baseline",
+    subtitle = "Simple spatial smoothing of burglary locations"
+  ) +
+  theme_crime()
+```
+
+**Question 3.1:** 
+How does the KDE map compare to the count map? 
+-Both maps reveal the same two dominant hot spots and show the similar pattern. The count map preservers exact per-cell counts and shows many 0, while the KDE map is continuous and smoother because it is less sensitive to how the grid is aligned.
+What does KDE capture well? What does it miss?
+-It can capture the overall intensity surface and the hot spots well, but it miss the true zero-pattern and it may be over-smooth.
+
+# Part 4: Create Spatial Predictor Variables
+
+## 4.1: Load 311 Abandoned Vehicle Calls
+
+```{r load-abandoned-cars}
+#| message: false
+
+rodent_baiting <- read_csv("D:/Code/musa-5080-fall-2025-portfolio-setup-student-portfolio-template/portfolio-setup-XiaoqingChen-729/assignments/assignment_4/data/311_Rodent_Baiting.csv") %>%
+  filter(!is.na(Latitude), !is.na(Longitude)) %>%
+  st_as_sf(coords = c("Longitude", "Latitude"), crs = 4326) %>%
+  st_transform('ESRI:102271')
+
+cat("✓ Loaded abandoned vehicle calls\n")
+cat("  - Number of calls:", nrow(rodent_baiting), "\n")
+```
+
+**Consider:** 
+How might the 311 reporting system itself be biased? 
+-It might has selection and access bias, there are always a few people who don't care about these things.
+Who calls 311?
+-The people who have internet access or smartphones, are good at English, highly trust in government.
+What neighborhoods have better 311 awareness?
+-It might be the neighborhoods with higher income, better educated and high-internet.
+
+## 4.2: Count of Abandoned Cars per Cell
+
+```{r count-abandoned-cars}
+rodent_fishnet <- st_join(rodent_baiting, fishnet, join = st_within) %>%
+  st_drop_geometry() %>%
+  group_by(uniqueID) %>%
+  summarize(rodent_baiting = n())
+
+fishnet <- fishnet %>%
+  left_join(rodent_fishnet, by = "uniqueID") %>%
+  mutate(rodent_baiting = replace_na(rodent_baiting, 0))
+
+cat("Abandoned car distribution:\n")
+summary(fishnet$rodent_baiting)
+```
+
+```{r visualize-abandoned-cars}
+#| fig-width: 10
+#| fig-height: 4
+
+p1 <- ggplot() +
+  geom_sf(data = fishnet, aes(fill = rodent_baiting), color = NA) +
+  scale_fill_viridis_c(name = "Count", option = "magma") +
+  labs(title = "Rodent Baiting 311 Calls") +
+  theme_crime()
+
+p2 <- ggplot() +
+  geom_sf(data = fishnet, aes(fill = countBurglaries), color = NA) +
+  scale_fill_viridis_c(name = "Count", option = "plasma") +
+  labs(title = "Burglaries") +
+  theme_crime()
+
+p1 + p2 +
+  plot_annotation(title = "Are rodent baiting and burglaries correlated?")
+```
+
+**Question 4.1:** 
+Do you see a visual relationship between rodent baiting and burglaries? 
+-Only parts of the map show the similar pattern. The north-central band shows noticeable co-location, while the south-central band isn't match another well.
+What does this suggest?
+-Any association can be weak to localized and likely confounded by reporting propensity and land use. So we need to take more issues into consideration instead of only treat rodents calls as a predictor.
+
+## 4.3: Nearest Neighbor Features
+
+```{r nn-feature}
+#| message: false
+fishnet_coords <- st_coordinates(st_centroid(fishnet))
+rodent_coords <- st_coordinates(rodent_baiting)
+
+nn_result <- get.knnx(rodent_coords, fishnet_coords, k = 3)
+
+fishnet <- fishnet %>%
+  mutate(
+    rodent_baiting.nn = rowMeans(nn_result$nn.dist)
+  )
+
+cat("✓ Calculated nearest neighbor distances\n")
+summary(fishnet$abandoned_cars.nn)
+```
+
+**Question 4.2:** 
+What does a low value of `rodent_baiting.nn` mean? 
+-It means the mean distance (in meters) from a cell’s centro id to its 3 nearest rodent-baiting calls is small, so high local concentration of rodent reports around that cell.
+A high value? 
+-It means the mean distance (in meters) from a cell’s centro id to its 3 nearest rodent-baiting calls is large, so rodent reports are spars nearby.
+Why might this be informative?
+-Because we can track the local density feature by a less sensitive way to grid edges than counts. It can also give information to present neighborhood conditions.
+
+## 4.4: Distance to Hot Spots
+
+```{r local-morans-abandoned}
+calculate_local_morans <- function(data, variable, k = 5) {
+  
+  coords <- st_coordinates(st_centroid(data))
+  neighbors <- knn2nb(knearneigh(coords, k = k))
+  weights <- nb2listw(neighbors, style = "W", zero.policy = TRUE)
+  
+  local_moran <- localmoran(data[[variable]], weights)
+
+  mean_val <- mean(data[[variable]], na.rm = TRUE)
+  
+  data %>%
+    mutate(
+      local_i = local_moran[, 1],
+      p_value = local_moran[, 5],
+      is_significant = p_value < 0.05,
+      
+      moran_class = case_when(
+        !is_significant ~ "Not Significant",
+        local_i > 0 & .data[[variable]] > mean_val ~ "High-High",
+        local_i > 0 & .data[[variable]] <= mean_val ~ "Low-Low",
+        local_i < 0 & .data[[variable]] > mean_val ~ "High-Low",
+        local_i < 0 & .data[[variable]] <= mean_val ~ "Low-High",
+        TRUE ~ "Not Significant"
+      )
+    )
+}
+
+fishnet <- calculate_local_morans(fishnet, "rodent_baiting", k = 5)
+```
+
+```{r visualize-morans}
+#| fig-width: 8
+#| fig-height: 6
+
+# Visualize hot spots
+ggplot() +
+  geom_sf(
+    data = fishnet, 
+    aes(fill = moran_class), 
+    color = NA
+  ) +
+  scale_fill_manual(
+    values = c(
+      "High-High" = "#800020",
+      "High-Low" = "#C08090",
+      "Low-High" = "#87CEEB",
+      "Low-Low" = "#003F5C",
+      "Not Significant" = "gray90"
+    ),
+    name = "Cluster Type"
+  ) +
+  labs(
+    title = "Local Moran's I: Rodent Baiting Clusters",
+    subtitle = "High-High = Hot spots of disorder"
+  ) +
+  theme_crime()
+```
+
+```{r distance-to-hotspots}
+hotspots <- fishnet %>%
+  filter(moran_class == "High-High") %>%
+  st_centroid()
+
+if (nrow(hotspots) > 0) {
+  fishnet <- fishnet %>%
+    mutate(
+      dist_to_hotspot = as.numeric(
+        st_distance(st_centroid(fishnet), hotspots %>% st_union())
+      )
+    )
+  
+  cat("✓ Calculated distance to abandoned car hot spots\n")
+  cat("  - Number of hot spot cells:", nrow(hotspots), "\n")
+} else {
+  fishnet <- fishnet %>%
+    mutate(dist_to_hotspot = 0)
+  cat("⚠ No significant hot spots found\n")
+}
+```
+
+**Question 4.3:** 
+Why might distance to a cluster of rodent baiting be more informative than distance to a single rodent baiting? 
+-A single 311 call can be noisy or isolated, while a cluster of calls reflects a persistent, neighborhood-level concentration which reduces outliers to some degree.
+What does Local Moran's I tell us?
+-It measures local spatial autocorrelation, flagging where values are similar to neighbors (Hot spots: High–High; Cold spots: Low–Low) or spatial outliers (High–Low, Low–High), with significance tests based on the chosen spatial weights/scale.
+
+# Part 5: Join Police Districts for Cross-Validation
+
+```{r join-districts}
+fishnet <- st_join(
+  fishnet,
+  policeDistricts,
+  join = st_within,
+  left = TRUE
+) %>%
+  filter(!is.na(District))
+
+cat("✓ Joined police districts\n")
+cat("  - Districts:", length(unique(fishnet$District)), "\n")
+cat("  - Cells:", nrow(fishnet), "\n")
+```
+
+# Part 6: Model Fitting
+
+## 6.1: Poisson Regression
+
+Burglary counts are count data (0, 1, 2, 3...). We'll use **Poisson regression**.
+
+```{r prepare-data}
+# Create clean modeling dataset
+fishnet_model <- fishnet %>%
+  st_drop_geometry() %>%
+  dplyr::select(
+    uniqueID,
+    District,
+    countBurglaries,
+    rodent_baiting,
+    rodent_baiting.nn,
+    dist_to_hotspot
+  ) %>%
+  na.omit()  # Remove any remaining NAs
+
+cat("✓ Prepared modeling data\n")
+cat("  - Observations:", nrow(fishnet_model), "\n")
+cat("  - Variables:", ncol(fishnet_model), "\n")
+```
+
+```{r fit-poisson}
+# Fit Poisson regression
+model_poisson <- glm(
+  countBurglaries ~ rodent_baiting + rodent_baiting.nn + 
+    dist_to_hotspot,
+  data = fishnet_model,
+  family = "poisson"
+)
+
+# Summary
+summary(model_poisson)
+```
+
+**Question 6.1:** 
+Interpret the coefficients. 
+-rodent_baiting: positive & significant (β = 0.000228, p ≈ 0.012).
+-rodent_baiting.nn: negative & significant (β = −0.000347, p < 0.001).
+-dist_to_hotspot: not significant (β ≈ 0.0000037, p ≈ 0.50).
+Which variables are significant? 
+-rodent_baiting and rodent_baiting.nn, because the p-value of dist_to_hotspot is higher than 0.05.
+What do the signs (positive/negative) tell you?
+-positive coefficient means each +1 unit multiplies the expected count by exp(β)(>1).
+
+## 6.2: Check for Overdispersion
+
+```{r check-overdispersion}
+dispersion <- sum(residuals(model_poisson, type = "pearson")^2) / 
+              model_poisson$df.residual
+
+cat("Dispersion parameter:", round(dispersion, 2), "\n")
+cat("Rule of thumb: >1.5 suggests overdispersion\n")
+
+if (dispersion > 1.5) {
+  cat("⚠ Overdispersion detected! Consider Negative Binomial model.\n")
+} else {
+  cat("✓ Dispersion looks okay for Poisson model.\n")
+}
+```
+
+## 6.3: Negative Binomial Regression
+
+```{r fit-negbin}
+model_nb <- glm.nb(
+  countBurglaries ~ rodent_baiting + rodent_baiting.nn + 
+    dist_to_hotspot,
+  data = fishnet_model
+)
+
+summary(model_nb)
+
+cat("\nModel Comparison:\n")
+cat("Poisson AIC:", round(AIC(model_poisson), 1), "\n")
+cat("Negative Binomial AIC:", round(AIC(model_nb), 1), "\n")
+```
+
+**Question 6.2:** 
+Which model fits better (lower AIC)? 
+- Negative Binomial AIC is lower.
+What does this tell you about the data?
+-The reference on how to choose a better model.
+
+# Part 7: Spatial Cross-Validation
+
+```{r spatial-cv}
+districts <- unique(fishnet_model$District)
+cv_results <- tibble()
+
+cat("Running LOGO Cross-Validation...\n")
+
+for (i in seq_along(districts)) {
+  
+  test_district <- districts[i]
+  
+  # Split data
+  train_data <- fishnet_model %>% filter(District != test_district)
+  test_data <- fishnet_model %>% filter(District == test_district)
+  
+  # Fit model on training data
+  model_cv <- glm.nb(
+    countBurglaries ~ rodent_baiting + rodent_baiting.nn + 
+      dist_to_hotspot,
+    data = train_data
+  )
+  
+  # Predict on test data
+  test_data <- test_data %>%
+    mutate(
+      prediction = predict(model_cv, test_data, type = "response")
+    )
+  
+  # Calculate metrics
+  mae <- mean(abs(test_data$countBurglaries - test_data$prediction))
+  rmse <- sqrt(mean((test_data$countBurglaries - test_data$prediction)^2))
+  
+  # Store results
+  cv_results <- bind_rows(
+    cv_results,
+    tibble(
+      fold = i,
+      test_district = test_district,
+      n_test = nrow(test_data),
+      mae = mae,
+      rmse = rmse
+    )
+  )
+  
+  cat("  Fold", i, "/", length(districts), "- District", test_district, 
+      "- MAE:", round(mae, 2), "\n")
+}
+
+# Overall results
+cat("\n✓ Cross-Validation Complete\n")
+cat("Mean MAE:", round(mean(cv_results$mae), 2), "\n")
+cat("Mean RMSE:", round(mean(cv_results$rmse), 2), "\n")
+```
+
+```{r cv-results-table}
+# Show results
+cv_results %>%
+  arrange(desc(mae)) %>%
+  kable(
+    digits = 2,
+    caption = "LOGO CV Results by District"
+  ) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+**Question 7.1:** 
+Why is spatial CV more appropriate than random CV for this problem? 
+-Because 311 calls is spatially autocorrelated, and random CV can cause sptial leakage and wrong residual.
+Which districts were hardest to predict?
+-Test_district 3 because it has the highest MAE and RMSE.
+
+# Part 8: Model Predictions and Comparison
+
+## 8.1: Generate Final Predictions
+
+```{r final-predictions}
+# Fit final model on all data
+final_model <- glm.nb(
+  countBurglaries ~ rodent_baiting + rodent_baiting.nn + 
+    dist_to_hotspot,
+  data = fishnet_model
+)
+
+# Add predictions back to fishnet
+fishnet <- fishnet %>%
+  mutate(
+    prediction_nb = predict(final_model, fishnet_model, type = "response")[match(uniqueID, fishnet_model$uniqueID)]
+  )
+
+# Also add KDE predictions (normalize to same scale as counts)
+kde_sum <- sum(fishnet$kde_value, na.rm = TRUE)
+count_sum <- sum(fishnet$countBurglaries, na.rm = TRUE)
+fishnet <- fishnet %>%
+  mutate(
+    prediction_kde = (kde_value / kde_sum) * count_sum
+  )
+```
+
+## 8.2: Compare Model vs. KDE Baseline
+
+```{r compare-models}
+#| fig-width: 12
+#| fig-height: 4
+
+p1 <- ggplot() +
+  geom_sf(data = fishnet, aes(fill = countBurglaries), color = NA) +
+  scale_fill_viridis_c(name = "Count", option = "plasma", limits = c(0, 15)) +
+  labs(title = "Actual Burglaries") +
+  theme_crime()
+
+p2 <- ggplot() +
+  geom_sf(data = fishnet, aes(fill = prediction_nb), color = NA) +
+  scale_fill_viridis_c(name = "Predicted", option = "plasma", limits = c(0, 15)) +
+  labs(title = "Model Predictions (Neg. Binomial)") +
+  theme_crime()
+
+p3 <- ggplot() +
+  geom_sf(data = fishnet, aes(fill = prediction_kde), color = NA) +
+  scale_fill_viridis_c(name = "Predicted", option = "plasma", limits = c(0, 15)) +
+  labs(title = "KDE Baseline Predictions") +
+  theme_crime()
+
+p1 + p2 + p3 +
+  plot_annotation(
+    title = "Actual vs. Predicted Burglaries",
+    subtitle = "Does our complex model outperform simple KDE?"
+  )
+```
+
+```{r model-comparison-metrics}
+comparison <- fishnet %>%
+  st_drop_geometry() %>%
+  filter(!is.na(prediction_nb), !is.na(prediction_kde)) %>%
+  summarize(
+    model_mae = mean(abs(countBurglaries - prediction_nb)),
+    model_rmse = sqrt(mean((countBurglaries - prediction_nb)^2)),
+    kde_mae = mean(abs(countBurglaries - prediction_kde)),
+    kde_rmse = sqrt(mean((countBurglaries - prediction_kde)^2))
+  )
+
+comparison %>%
+  pivot_longer(everything(), names_to = "metric", values_to = "value") %>%
+  separate(metric, into = c("approach", "metric"), sep = "_") %>%
+  pivot_wider(names_from = metric, values_from = value) %>%
+  kable(
+    digits = 2,
+    caption = "Model Performance Comparison"
+  ) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+**Question 8.1:** 
+Does the complex model outperform the simple KDE baseline? 
+-No.Compared to the MAE and RMSE, KDE baseline performs better with lower numbers.
+By how much? 
+-KDE baseline's MAE is 0.30 higher and RMSE is 0.54 higher.
+Is the added complexity worth it?
+-The complex model is worse than the simple KDE, so the extra complexity isn’t justified for pure prediction on 2017.
+
+## 8.3: Where Does the Model Work Well?
+
+p.s. There is a mistake in the predictive_policing_exercise. It's 8.3, not 9.3 (so does the question order). So the next part is Part 9, not part 10
+
+```{r prediction-errors}
+#| fig-width: 10
+#| fig-height: 5
+
+fishnet <- fishnet %>%
+  mutate(
+    error_nb = countBurglaries - prediction_nb,
+    error_kde = countBurglaries - prediction_kde,
+    abs_error_nb = abs(error_nb),
+    abs_error_kde = abs(error_kde)
+  )
+
+p1 <- ggplot() +
+  geom_sf(data = fishnet, aes(fill = error_nb), color = NA) +
+  scale_fill_gradient2(
+    name = "Error",
+    low = "#003F5C", mid = "white", high = "#800020",
+    midpoint = 0,
+    limits = c(-10, 10)
+  ) +
+  labs(title = "Model Errors (Actual - Predicted)") +
+  theme_crime()
+
+p2 <- ggplot() +
+  geom_sf(data = fishnet, aes(fill = abs_error_nb), color = NA) +
+  scale_fill_viridis_c(name = "Abs. Error", option = "magma") +
+  labs(title = "Absolute Model Errors") +
+  theme_crime()
+
+p1 + p2
+```
+
+**Question 8.2:** 
+Where does the model make the biggest errors? 
+-Clear under-prediction clusters is presented in the north and south center, with the dark red spots.Moreover, over-prediction clusters is presented in the north-west direction, with the dark blue spots.
+Are there spatial patterns in the errors?
+-Errors are systematic, not random, which means there is spatial non-stationarity and that rodent-311 features don’t explain burglary well in the south-east.
+What might this reveal?
+-This likely reflects 311 reporting bias and missing other context.
+
+# Part 9: Summary Statistics and Tables
+
+## 9.1: Model Summary Table
+
+```{r model-summary-table}
+model_summary <- broom::tidy(final_model, exponentiate = TRUE) %>%
+  mutate(
+    across(where(is.numeric), ~round(., 3))
+  )
+
+model_summary %>%
+  kable(
+    caption = "Final Negative Binomial Model Coefficients (Exponentiated)",
+    col.names = c("Variable", "Rate Ratio", "Std. Error", "Z", "P-Value")
+  ) %>%
+  kable_styling(bootstrap_options = c("striped", "hover")) %>%
+  footnote(
+    general = "Rate ratios > 1 indicate positive association with burglary counts."
+  )
+```
+
+## 9.2: Key Findings Summary
+
+Based on your analysis, complete this summary:
+
+**Technical Performance:**
+
+-   Cross-validation MAE: `r round(mean(cv_results$mae), 2)`
+-   Model vs. KDE: \[KDE\]
+-   Most predictive variable: \[rodent_baiting.nn, β=-0.008978405\]
+
+**Spatial Patterns:**
+
+-   Burglaries are \[clustered\]
+-   Hot spots are located in \[north-central and south-central part\]
+-   Model errors show \[systematic\] patterns
+
+**Model Limitations:**
+
+-   Overdispersion: \[Yes\]
+-   Spatial autocorrelation in residuals: \[Yes, residuals form contiguous clusters.\]
+-   Cells with zero counts: \[311 calls:14.4%; burglaries:24.2%\]
+
+# Conclusion and Next Steps
+Conclusion:
+-Burglaries and 311 calls is clustered, ususally have correlationship.
+-KDE beats the model. 
+
+Next steps:
+-Enrich features and spatial structure, adding more predictors to make model more accurate and better.
+
+
+
