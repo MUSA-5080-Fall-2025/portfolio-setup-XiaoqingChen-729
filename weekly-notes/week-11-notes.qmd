@@ -1,0 +1,11 @@
+---
+title: "Week 11 Notes"
+date: "2025-11-17"
+---
+
+## Key Concepts Learned
+- [Current: Space-Time Prediction]
+
+## Weekly notes picture
+- [Here's the jpg of my notes]
+![Week 11 Note](week-11-notes.jpg){width=80%}
