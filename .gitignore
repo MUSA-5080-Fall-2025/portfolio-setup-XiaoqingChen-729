@@ -1,3 +1,8 @@
 /.quarto/
 **/*.quarto_ipynb
 .Rproj.user
+
+assignments/assignment_5/*.rdb
+assignments/assignment_5/*.RData
+assignments/assignment_5/*.rds
+assignments/assignment_5/*.rdx

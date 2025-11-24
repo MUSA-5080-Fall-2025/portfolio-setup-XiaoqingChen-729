@@ -2,19 +2,12 @@
 title: "Assignment 5: Space-Time Prediction of Bike Share Demand: Philadelphia Indego"
 author: "Xiaoqing (Kelsey) Chen"
 date: "`r Sys.Date()`"
-format:
-  html:
-    code-fold: true
-    code-tools: true
+output: 
+  html_document:
     toc: true
-    toc-depth: 3
-    toc-location: left
-    theme: cosmo
-    embed-resources: true
-editor: visual
-execute:
-  warning: false
-  message: false
+    toc_float: true
+    code_folding: show
+    code_download: true
 ---
 
 # Setup
