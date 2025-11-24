@@ -1,7 +1,7 @@
 ---
 title: "Assignment 5: Space-Time Prediction of Bike Share Demand: Philadelphia Indego"
 author: "Xiaoqing (Kelsey) Chen"
-date: today
+date: "2025-11-24"
 format:
   html:
     code-fold: show
@@ -1363,12 +1363,12 @@ model6 <- lm(
 summary(model6)
 
 ```
+
 ```{r}
 cat("Model6 R-squared:", summary(model6)$r.squared, "\n")
 cat("Model6 Adj R-squared:", summary(model6)$adj.r.squared, "\n")
 
 ```
-
 
 ------------------------------------------------------------------------
 
